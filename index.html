@@ -1,2 +1,432 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Error><Code>AccessDenied</Code><Message>Request has expired</Message><X-Amz-Expires>1143</X-Amz-Expires><Expires>2026-09-24T10:04:38Z</Expires><ServerTime>2026-09-24T10:09:14Z</ServerTime><RequestId>MSSVZVP6J1SEZRF0</RequestId><HostId>bvsLhDg1pa/m50Elz0IIDQ6IxRkMkYTo0m5ig0mIjWPkGmp8gEB5GxsO0N0qLyWS3CeECJORuAc=</HostId></Error>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Class 1B Timetable</title>
+  <style>
+    :root, [data-theme="light"] {
+      --bg: #f5f3ee;
+      --surface: #fcfbf8;
+      --surface-2: #f0ede6;
+      --border: rgba(40, 37, 29, 0.12);
+      --text: #28251d;
+      --muted: #756f66;
+      --primary: #ffbf47;
+      --primary-soft: #fff0cc;
+      --shadow: 0 8px 28px rgba(28, 24, 16, 0.08);
+      --nav: rgba(252, 251, 248, 0.9);
+      --subject-default: #ece7de;
+    }
+    [data-theme="dark"] {
+      --bg: #171614;
+      --surface: #201f1d;
+      --surface-2: #2a2825;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #efede8;
+      --muted: #aba59c;
+      --primary: #ffbf47;
+      --primary-soft: rgba(255,191,71,0.18);
+      --shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
+      --nav: rgba(28, 27, 25, 0.92);
+      --subject-default: #2c2a26;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    button, input { font: inherit; }
+    .app {
+      max-width: 760px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      padding: 20px 16px 96px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .title-wrap h1 { margin: 0; font-size: 1.7rem; line-height: 1.05; }
+    .title-wrap p { margin: 6px 0 0; color: var(--muted); font-size: 0.96rem; }
+    .theme-toggle {
+      min-width: 46px; min-height: 46px; border-radius: 999px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text); display: grid; place-items: center; box-shadow: var(--shadow);
+    }
+    .hero-card {
+      background: linear-gradient(180deg,
+        color-mix(in srgb, var(--primary) 34%, var(--surface)),
+        color-mix(in srgb, var(--primary) 18%, var(--surface-2))
+      );
+      border: 1px solid color-mix(in srgb, var(--primary) 34%, var(--border));
+      border-radius: 24px; padding: 18px; box-shadow: var(--shadow); margin-bottom: 18px;
+    }
+    .hero-top {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 14px;
+    }
+    .eyebrow {
+      display: inline-flex; padding: 6px 10px; border-radius: 999px; background: var(--primary-soft);
+      color: #7a4b00; font-weight: 700; font-size: 0.82rem; margin-bottom: 10px;
+    }
+    [data-theme="dark"] .eyebrow { color: #ffd98b; }
+    .hero-date { font-size: 1.28rem; font-weight: 800; margin: 0 0 4px; }
+    .hero-sub { margin: 0; color: var(--muted); }
+    .day-chip {
+      white-space: nowrap; border-radius: 16px; background: rgba(0,0,0,0.72); color: #fff8ea;
+      padding: 12px 14px; font-weight: 800; font-size: 0.98rem;
+    }
+    .quickbar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; margin-top: 8px; }
+    .quickbar button {
+      border: 1px solid var(--border); background: rgba(255,255,255,0.55); color: var(--text);
+      border-radius: 14px; padding: 12px 14px; white-space: nowrap; min-height: 44px;
+    }
+    .panel { display: none; margin-top: 8px; }
+    .panel.active { display: block; }
+    .section-head {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 18px 2px 12px;
+    }
+    .section-head h2 { margin: 0; font-size: 1.18rem; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .date-picker {
+      width: 100%; border-radius: 16px; border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); padding: 14px 16px; min-height: 48px; margin-bottom: 12px;
+    }
+    .calendar-actions { margin-top: 12px; display: flex; gap: 10px; }
+    .calendar-actions button {
+      min-height: 46px; border-radius: 14px; border: 1px solid var(--border); padding: 12px 16px;
+      background: var(--text); color: var(--bg); font-weight: 800;
+    }
+    .timetable { display: grid; gap: 12px; }
+    .lesson {
+      border-radius: 22px; padding: 14px 14px 14px 16px; border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: var(--shadow); color: #181612;
+    }
+    .lesson-inner { display: grid; grid-template-columns: 108px 1fr auto; gap: 12px; align-items: center; }
+    .time { font-size: 0.95rem; color: rgba(24, 22, 18, 0.72); font-variant-numeric: tabular-nums; }
+    .subject { font-weight: 900; font-size: 1.1rem; letter-spacing: 0.01em; }
+    .tag {
+      padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,0.62); font-weight: 800;
+      font-size: 0.95rem; min-width: 66px; text-align: center;
+    }
+    .empty {
+      border: 1px dashed var(--border); border-radius: 20px; padding: 22px 16px; text-align: center;
+      color: var(--muted); background: var(--surface);
+    }
+    .days-table-wrap {
+      border: 1px solid var(--border); background: var(--surface); border-radius: 20px; overflow: auto; box-shadow: var(--shadow);
+    }
+    .days-table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0; }
+    .days-table th, .days-table td {
+      padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap;
+    }
+    .days-table thead th {
+      background: var(--surface-2); font-size: 0.92rem; position: sticky; top: 0; z-index: 2;
+    }
+    .days-table tbody tr:last-child td { border-bottom: 0; }
+    .time-col {
+      color: var(--muted); font-variant-numeric: tabular-nums; position: sticky; left: 0; z-index: 1;
+      background: var(--surface); box-shadow: 6px 0 10px rgba(0,0,0,0.04);
+    }
+    .days-table thead .time-col { z-index: 3; background: var(--surface-2); }
+    .subject-cell { font-weight: 800; color: #181612; border-left: 1px solid rgba(0,0,0,0.04); }
+    .calendar-card {
+      border: 1px solid var(--border); background: var(--surface); border-radius: 20px; padding: 16px; box-shadow: var(--shadow);
+    }
+    .calendar-note { margin: 10px 2px 0; color: var(--muted); font-size: 0.92rem; }
+    .nav {
+      position: fixed; left: 50%; bottom: max(12px, env(safe-area-inset-bottom)); transform: translateX(-50%);
+      width: min(760px, calc(100vw - 24px)); background: var(--nav); backdrop-filter: blur(16px); border: 1px solid var(--border);
+      box-shadow: var(--shadow); border-radius: 24px; padding: 8px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; z-index: 10;
+    }
+    .nav button {
+      min-height: 52px; border-radius: 18px; border: 0; color: var(--muted); background: transparent; font-weight: 800; padding: 10px 8px;
+    }
+    .nav button.active { background: var(--text); color: var(--bg); }
+    @media (max-width: 560px) {
+      .app { padding-left: 12px; padding-right: 12px; }
+      .lesson-inner { grid-template-columns: 92px 1fr auto; gap: 10px; }
+      .subject { font-size: 1rem; }
+      .tag { min-width: 58px; padding: 8px 10px; }
+      .hero-top { flex-direction: column; }
+      .day-chip { align-self: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="title-wrap">
+        <h1>Class 1B</h1>
+        <p id="subtitle">今日課表</p>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="切換深色模式">🌙</button>
+    </header>
+
+    <section class="hero-card">
+      <div class="hero-top">
+        <div>
+          <div class="eyebrow">當日課表</div>
+          <p class="hero-date" id="heroDate">--</p>
+          <p class="hero-sub" id="heroMeta">--</p>
+        </div>
+        <div class="day-chip" id="dayChip">Day --</div>
+      </div>
+      <div class="quickbar">
+        <button id="todayBtn">今日</button>
+        <button id="nextSchoolDayBtn">下一個上課日</button>
+      </div>
+    </section>
+
+    <main>
+      <section id="panel-timetable" class="panel active">
+        <div class="section-head">
+          <div>
+            <h2>課表</h2>
+            <p>只顯示所選日期課堂</p>
+          </div>
+        </div>
+        <input class="date-picker" id="dateInput" type="date" />
+        <div id="todayList" class="timetable"></div>
+      </section>
+
+      <section id="panel-days" class="panel">
+        <div class="section-head">
+          <div>
+            <h2>Day 1-7</h2>
+            <p>一個 table 睇晒所有循環日</p>
+          </div>
+        </div>
+        <div id="daysGrid"></div>
+      </section>
+
+      <section id="panel-calendar" class="panel">
+        <div class="section-head">
+          <div>
+            <h2>月曆</h2>
+            <p>揀日期後按「查看課表」</p>
+          </div>
+        </div>
+        <div class="calendar-card">
+          <input class="date-picker" id="calendarInput" type="date" style="margin-bottom:0;" />
+          <div class="calendar-actions">
+            <button id="calendarGoBtn">查看課表</button>
+          </div>
+        </div>
+        <p class="calendar-note" id="calendarNote">請選擇日期。</p>
+      </section>
+    </main>
+  </div>
+
+  <nav class="nav" aria-label="底部導航">
+    <button class="active" data-panel="timetable">課表</button>
+    <button data-panel="days">Day 1-7</button>
+    <button data-panel="calendar">月曆</button>
+  </nav>
+
+  <script>
+    const timetable = {
+      'I': [
+        { time: '08:25–08:50', subject: 'CHI' }, { time: '08:50–09:15', subject: 'CHI' },
+        { time: '09:30–09:55', subject: 'MATH' }, { time: '09:55–10:20', subject: 'MATH' },
+        { time: '10:30–10:55', subject: 'ENG' }, { time: '10:55–11:20', subject: 'ENG' },
+        { time: '11:30–11:55', subject: 'ICT/LIB' }, { time: '11:55–12:20', subject: 'PHum' },
+        { time: '12:20–12:50', subject: 'PHum' }
+      ],
+      'II': [
+        { time: '08:25–08:50', subject: 'VA' }, { time: '08:50–09:15', subject: 'VA' },
+        { time: '09:30–09:55', subject: 'CHI' }, { time: '09:55–10:20', subject: 'CHI' },
+        { time: '10:30–10:55', subject: 'RE' }, { time: '10:55–11:20', subject: 'MATH' },
+        { time: '11:30–11:55', subject: 'ENG' }, { time: '11:55–12:20', subject: 'IL' }
+      ],
+      'III': [
+        { time: '08:25–08:50', subject: 'PTH' }, { time: '08:50–09:15', subject: 'MUS' },
+        { time: '09:30–09:55', subject: 'ENG' }, { time: '09:55–10:20', subject: 'ENG' },
+        { time: '10:30–10:55', subject: 'CHI' }, { time: '10:55–11:20', subject: 'CHI' },
+        { time: '11:30–11:55', subject: 'MATH' }, { time: '11:55–12:20', subject: 'PE' },
+        { time: '12:20–12:50', subject: 'Tutorial' }
+      ],
+      'IV': [
+        { time: '08:25–08:50', subject: 'SCI' }, { time: '08:50–09:15', subject: 'SCI' },
+        { time: '09:30–09:55', subject: 'CHI' }, { time: '09:55–10:20', subject: 'CHI' },
+        { time: '10:30–10:55', subject: 'MATH' }, { time: '10:55–11:20', subject: 'ENG' },
+        { time: '11:30–11:55', subject: 'ICT' }, { time: '11:55–12:20', subject: 'IL' }
+      ],
+      'V': [
+        { time: '08:25–08:50', subject: 'CHI' }, { time: '08:50–09:15', subject: 'CHI' },
+        { time: '09:30–09:55', subject: 'MATH' }, { time: '09:55–10:20', subject: 'VA' },
+        { time: '10:30–10:55', subject: 'Reading' }, { time: '10:55–11:20', subject: 'Reading' },
+        { time: '11:30–11:55', subject: 'RE' }, { time: '11:55–12:20', subject: 'MUS' },
+        { time: '12:20–12:50', subject: 'Tutorial' }
+      ],
+      'VI': [
+        { time: '08:25–08:50', subject: 'PHum' }, { time: '08:50–09:15', subject: 'PHum' },
+        { time: '09:30–09:55', subject: 'MATH' }, { time: '09:55–10:20', subject: 'ENG' },
+        { time: '10:30–10:55', subject: 'PE' }, { time: '10:55–11:20', subject: 'PE' },
+        { time: '11:30–11:55', subject: 'CHI' }, { time: '11:55–12:20', subject: 'IL' }
+      ],
+      'VII': [
+        { time: '08:25–08:50', subject: 'SCI' }, { time: '08:50–09:15', subject: 'SCI' },
+        { time: '09:30–09:55', subject: 'MUS' }, { time: '09:55–10:20', subject: 'MATH' },
+        { time: '10:30–10:55', subject: 'ENG' }, { time: '10:55–11:20', subject: 'ENG' },
+        { time: '11:30–11:55', subject: 'CHI' }, { time: '11:55–12:20', subject: 'CHI' },
+        { time: '12:20–12:50', subject: 'Tutorial' }
+      ]
+    };
+
+    const dayCycle = {
+      '2026-09-07':'I','2026-09-08':'II','2026-09-09':'III','2026-09-10':'IV','2026-09-11':'V','2026-09-14':'VI','2026-09-15':'VII','2026-09-16':'I','2026-09-17':'II','2026-09-18':'III','2026-09-21':'IV','2026-09-22':'V','2026-09-23':'VI','2026-09-24':'VII','2026-09-25':'I','2026-09-28':'II','2026-09-29':'III','2026-09-30':'IV','2026-10-02':'V','2026-10-05':'VI','2026-10-06':'VII','2026-10-07':'I','2026-10-08':'II','2026-10-09':'III','2026-10-12':'IV','2026-10-13':'V','2026-10-14':'VI','2026-10-15':'VII','2026-10-16':'I','2026-10-19':'II','2026-10-20':'III','2026-10-21':'IV','2026-10-22':'V','2026-10-23':'VI','2026-10-26':'V','2026-10-27':'VI','2026-10-28':'VII','2026-10-29':'I','2026-10-30':'II','2026-11-02':'III','2026-11-03':'IV','2026-11-04':'V','2026-11-05':'VI','2026-11-06':'VII','2026-11-16':'I','2026-11-17':'II','2026-11-18':'III','2026-11-19':'IV','2026-11-20':'V','2026-11-23':'VI','2026-11-24':'VII','2026-11-25':'I','2026-11-26':'II','2026-11-27':'III','2026-11-30':'IV','2027-01-04':'V','2027-01-05':'VI','2027-01-06':'VII','2027-01-07':'I','2027-01-08':'II','2027-01-11':'III','2027-01-12':'IV','2027-01-13':'V','2027-01-14':'VI','2027-01-15':'VII','2027-01-18':'I','2027-01-19':'II','2027-01-20':'III','2027-01-21':'IV','2027-01-22':'V','2027-01-25':'VI','2027-01-26':'VII','2027-01-27':'I','2027-01-28':'II','2027-01-29':'III','2027-02-01':'IV','2027-02-02':'V','2027-02-16':'VI','2027-02-17':'VII','2027-02-18':'I','2027-02-19':'II','2027-02-22':'III','2027-02-23':'IV','2027-02-24':'V','2027-02-25':'VI','2027-02-26':'VII','2027-03-01':'I','2027-03-02':'II','2027-03-03':'III','2027-03-04':'IV','2027-03-05':'V','2027-03-15':'VI','2027-03-16':'VII','2027-03-17':'I','2027-03-18':'II','2027-03-19':'III','2027-03-22':'IV','2027-03-23':'V','2027-04-06':'VI','2027-04-07':'VII','2027-04-08':'I','2027-04-09':'II','2027-04-12':'III','2027-04-13':'IV','2027-04-14':'V','2027-04-15':'VI','2027-04-16':'VII','2027-04-19':'I','2027-04-20':'II','2027-04-21':'III','2027-04-22':'IV','2027-04-23':'V','2027-04-26':'VI','2027-04-27':'VII','2027-04-28':'I','2027-04-29':'II','2027-04-30':'III','2027-05-03':'IV','2027-05-04':'V','2027-05-05':'VI','2027-05-07':'VII','2027-05-10':'I','2027-05-11':'II','2027-05-12':'III','2027-05-14':'IV','2027-05-17':'V','2027-05-18':'VI','2027-05-19':'VII','2027-05-20':'I','2027-05-21':'II','2027-05-24':'III','2027-05-25':'IV','2027-05-26':'V','2027-05-27':'VI','2027-05-28':'VII','2027-06-07':'I','2027-06-08':'II','2027-06-10':'III','2027-06-11':'IV','2027-06-14':'V','2027-06-15':'VI','2027-06-16':'VII','2027-06-17':'I','2027-06-18':'II','2027-06-21':'III','2027-06-22':'IV','2027-06-23':'V','2027-06-24':'VI','2027-06-25':'VII','2027-06-28':'I','2027-06-29':'II','2027-06-30':'III','2027-07-02':'IV','2027-07-05':'V','2027-07-06':'VI','2027-07-07':'VII','2027-07-08':'I'
+    };
+
+    const subjectColors = {
+      CHI: '#efd4bf', ENG: '#c8d8ff', MATH: '#f5db93', SCI: '#d2e7cf', ICT: '#cce6ea',
+      'ICT/LIB': '#cce6ea', LIB: '#d8d7ef', PE: '#f7b8bd', PTH: '#e5d2f7', MUS: '#f4cfe2',
+      PHum: '#d8d0c7', RE: '#d7e8c9', VA: '#ffd7c7', IL: '#e3e3e3', Reading: '#d5ead8', Tutorial: '#e8d9c6'
+    };
+
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+    const dateInput = $('#dateInput');
+    const calendarInput = $('#calendarInput');
+    const todayList = $('#todayList');
+    const heroDate = $('#heroDate');
+    const heroMeta = $('#heroMeta');
+    const dayChip = $('#dayChip');
+    const subtitle = $('#subtitle');
+    const daysGrid = $('#daysGrid');
+    const themeToggle = $('#themeToggle');
+    const calendarNote = $('#calendarNote');
+    const calendarGoBtn = $('#calendarGoBtn');
+
+    let currentTheme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    syncThemeIcon();
+
+    function syncThemeIcon() {
+      themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+      themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? '切換淺色模式' : '切換深色模式');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      syncThemeIcon();
+    });
+
+    function formatDateLabel(v) {
+      const d = new Date(v + 'T00:00:00');
+      return d.toLocaleDateString('zh-HK', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+    }
+
+    function colorFor(subject) {
+      return subjectColors[subject] || getComputedStyle(document.documentElement).getPropertyValue('--subject-default');
+    }
+
+    function renderLessons(dateStr) {
+      const day = dayCycle[dateStr];
+      const lessons = day ? timetable[day] || [] : [];
+      heroDate.textContent = formatDateLabel(dateStr);
+      heroMeta.textContent = day ? '依照 Day Cycle 自動顯示' : '這天沒有上課資料';
+      dayChip.textContent = day ? `Day ${day}` : 'No School';
+      subtitle.textContent = day ? `今日課表 · Day ${day}` : '今日課表';
+      calendarNote.textContent = day ? `${formatDateLabel(dateStr)} · Day ${day}` : `${formatDateLabel(dateStr)} · 沒有上課資料`;
+
+      if (!day || !lessons.length) {
+        todayList.innerHTML = '<div class="empty">這天沒有 timetable 資料。</div>';
+        return;
+      }
+
+      todayList.innerHTML = lessons.map(item => {
+        const bg = colorFor(item.subject).trim() || '#ece7de';
+        return `
+          <article class="lesson" style="background:${bg}">
+            <div class="lesson-inner">
+              <div class="time">${item.time}</div>
+              <div class="subject">${item.subject}</div>
+              <div class="tag">${item.subject}</div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderDayCards() {
+      const order = ['I','II','III','IV','V','VI','VII'];
+      const maxRows = Math.max(...order.map(day => (timetable[day] || []).length));
+      const rows = [];
+      for (let i = 0; i < maxRows; i++) {
+        const sampleTime = order.map(day => timetable[day]?.[i]?.time).find(Boolean) || '';
+        const cells = order.map(day => {
+          const item = timetable[day]?.[i];
+          if (!item) return '<td></td>';
+          const bg = colorFor(item.subject).trim() || '#ece7de';
+          return `<td class="subject-cell" style="background:${bg}">${item.subject}</td>`;
+        }).join('');
+        rows.push(`<tr><td class="time-col">${sampleTime}</td>${cells}</tr>`);
+      }
+      daysGrid.innerHTML = `
+        <div class="days-table-wrap">
+          <table class="days-table">
+            <thead>
+              <tr>
+                <th class="time-col">時間</th>
+                ${order.map(day => `<th>Day ${day}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody>${rows.join('')}</tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function nextSchoolDay(fromDate) {
+      const dates = Object.keys(dayCycle).sort();
+      return dates.find(d => d > fromDate) || fromDate;
+    }
+
+    function setDate(dateStr) {
+      if (!dateStr) return;
+      dateInput.value = dateStr;
+      calendarInput.value = dateStr;
+      renderLessons(dateStr);
+    }
+
+    function showPanel(name) {
+      $$('.panel').forEach(panel => panel.classList.toggle('active', panel.id === `panel-${name}`));
+      $$('.nav button').forEach(btn => btn.classList.toggle('active', btn.dataset.panel === name));
+    }
+
+    function goFromCalendar() {
+      const picked = calendarInput.value;
+      if (!picked) return;
+      setDate(picked);
+      showPanel('timetable');
+    }
+
+    const today = new Date();
+    const todayStr = today.toISOString().slice(0, 10);
+    const fallbackDate = dayCycle[todayStr] ? todayStr : Object.keys(dayCycle).find(d => d >= todayStr) || Object.keys(dayCycle)[0];
+
+    renderDayCards();
+    setDate(fallbackDate);
+
+    dateInput.addEventListener('change', e => setDate(e.target.value));
+    calendarInput.addEventListener('change', e => {
+      const picked = e.target.value;
+      if (!picked) return;
+      const day = dayCycle[picked];
+      calendarNote.textContent = day ? `${formatDateLabel(picked)} · Day ${day}` : `${formatDateLabel(picked)} · 沒有上課資料`;
+    });
+    calendarGoBtn.addEventListener('click', goFromCalendar);
+    $('#todayBtn').addEventListener('click', () => setDate(fallbackDate));
+    $('#nextSchoolDayBtn').addEventListener('click', () => setDate(nextSchoolDay(dateInput.value || fallbackDate)));
+    $$('.nav button').forEach(btn => btn.addEventListener('click', () => showPanel(btn.dataset.panel)));
+  </script>
+</body>
+</html>
