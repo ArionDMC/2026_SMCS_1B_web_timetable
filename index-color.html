@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026 SMCS Class 1B 時間表（Color）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root,
+    [data-theme="light"] {
+      --bg: #f7f6f2;
+      --surface: #fbfaf7;
+      --surface-2: #f1f4f4;
+      --text: #222;
+      --muted: #6d6c68;
+      --faint: #8c877f;
+      --line: #d7d4cd;
+      --primary: #2d6f73;
+      --chip: #ece9e4;
+      --shadow: 0 8px 24px rgba(0,0,0,.05);
+    }
+
+    [data-theme="dark"] {
+      --bg: #181715;
+      --surface: #22201d;
+      --surface-2: #283032;
+      --text: #ece9e1;
+      --muted: #b1aca3;
+      --faint: #8e887f;
+      --line: #3d3934;
+      --primary: #5ca1a7;
+      --chip: #2b2926;
+      --shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans HK", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .overview { background: var(--surface-2); }
+    .meta { margin: 14px 0 0; font-size: 18px; }
+
+    .chip {
+      margin-top: 12px;
+      background: var(--chip);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px 14px;
+    }
+
+    .actions-panel {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: -4px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      min-height: 52px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .search {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .search input {
+      width: 100%;
+      min-height: 56px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      padding: 0 16px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 0 14px;
+    }
+
+    .lessons {
+      display: grid;
+      gap: 12px;
+    }
+
+    .lesson {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+
+    .time {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .subject {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-top: 2px;
+    }
+
+    .subject-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .lesson.non-class {
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+
+    .lesson.non-class .time,
+    .lesson.non-class .subject {
+      color: var(--faint);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+
+    .iconbtn {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .empty {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .wrapper { padding: 10px; }
+      .actions-panel { grid-template-columns: repeat(2, 1fr); }
+      .subject { font-size: 22px; }
+      .hero h1 { font-size: 22px; }
+      .search { grid-template-columns: 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="topbar">
+      <button class="iconbtn" id="themeBtn" aria-label="toggle theme">◐</button>
+    </div>
+
+    <section class="card hero">
+      <h1>2026 SMCS Class 1B 時間表</h1>
+    </section>
+
+    <section class="card overview">
+      <span class="badge" id="dayBadge">--</span>
+      <div class="meta" id="dateText">--</div>
+      <div class="meta" id="peText">下一次 PE 堂：--</div>
+      <div class="chip" id="readingBook">Reading Book：--</div>
+    </section>
+
+    <section class="actions-panel">
+      <button class="btn" id="todayBtn">今日</button>
+      <button class="btn" id="tomorrowBtn">明天</button>
+      <button class="btn" id="nextSchoolBtn">下一個上課日</button>
+      <button class="btn" id="nextPeBtn">最近 PE</button>
+    </section>
+
+    <section class="card">
+      <div class="field">
+        <label for="dateInput">查日期</label>
+      </div>
+      <div class="search">
+        <input id="dateInput" type="date">
+        <button class="btn primary" id="goBtn">查看</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">當日課表</h2>
+      <div class="lessons" id="lessons"></div>
+    </section>
+  </div>
+
+  <script>
+    const timetableData = [{"day": "I", "half_day_time": "7:30–8:05", "whole_day_time": "7:30–8:05", "subject": "Reading Session", "is_non_class": true}, {"day": "II", "half_day_time": "7:30–8:05", "whole_day_time": "7:30–8:05", "subject": "Reading Session", "is_non_class": true}, {"day": "III", "half_day_time": "7:30–8:05", "whole_day_time": "7:30–8:05", "subject": "Reading Session", "is_non_class": true}, {"day": "IV", "half_day_time": "7:30–8:05", "whole_day_time": "7:30–8:05", "subject": "Reading Session", "is_non_class": true}, {"day": "V", "half_day_time": "7:30–8:05", "whole_day_time": "7:30–8:05", "subject": "Reading Session", "is_non_class": true}, {"day": "VI", "half_day_time": "7:30–8:05", "whole_day_time": "7:30–8:05", "subject": "Reading Session", "is_non_class": true}, {"day": "VII", "half_day_time": "7:30–8:05", "whole_day_time": "7:30–8:05", "subject": "Reading Session", "is_non_class": true}, {"day": "I", "half_day_time": "8:05–8:25", "whole_day_time": "8:05–8:25", "subject": "Assembly", "is_non_class": true}, {"day": "II", "half_day_time": "8:05–8:25", "whole_day_time": "8:05–8:25", "subject": "Assembly", "is_non_class": true}, {"day": "III", "half_day_time": "8:05–8:25", "whole_day_time": "8:05–8:25", "subject": "Assembly", "is_non_class": true}, {"day": "IV", "half_day_time": "8:05–8:25", "whole_day_time": "8:05–8:25", "subject": "Assembly", "is_non_class": true}, {"day": "V", "half_day_time": "8:05–8:25", "whole_day_time": "8:05–8:25", "subject": "Assembly", "is_non_class": true}, {"day": "VI", "half_day_time": "8:05–8:25", "whole_day_time": "8:05–8:25", "subject": "Assembly", "is_non_class": true}, {"day": "VII", "half_day_time": "8:05–8:25", "whole_day_time": "8:05–8:25", "subject": "Assembly", "is_non_class": true}, {"day": "I", "half_day_time": "8:25–8:50", "whole_day_time": "8:25–9:00", "subject": "1B CHI", "is_non_class": false}, {"day": "II", "half_day_time": "8:25–8:50", "whole_day_time": "8:25–9:00", "subject": "1B VA", "is_non_class": false}, {"day": "III", "half_day_time": "8:25–8:50", "whole_day_time": "8:25–9:00", "subject": "1B PTH", "is_non_class": false}, {"day": "IV", "half_day_time": "8:25–8:50", "whole_day_time": "8:25–9:00", "subject": "1B SCI", "is_non_class": false}, {"day": "V", "half_day_time": "8:25–8:50", "whole_day_time": "8:25–9:00", "subject": "1B CHI", "is_non_class": false}, {"day": "VI", "half_day_time": "8:25–8:50", "whole_day_time": "8:25–9:00", "subject": "1B PHum", "is_non_class": false}, {"day": "VII", "half_day_time": "8:25–8:50", "whole_day_time": "8:25–9:00", "subject": "1B SCI", "is_non_class": false}, {"day": "I", "half_day_time": "8:50–9:15", "whole_day_time": "9:00–9:35", "subject": "1B CHI", "is_non_class": false}, {"day": "II", "half_day_time": "8:50–9:15", "whole_day_time": "9:00–9:35", "subject": "1B VA", "is_non_class": false}, {"day": "III", "half_day_time": "8:50–9:15", "whole_day_time": "9:00–9:35", "subject": "1B MUS", "is_non_class": false}, {"day": "IV", "half_day_time": "8:50–9:15", "whole_day_time": "9:00–9:35", "subject": "1B SCI", "is_non_class": false}, {"day": "V", "half_day_time": "8:50–9:15", "whole_day_time": "9:00–9:35", "subject": "1B CHI", "is_non_class": false}, {"day": "VI", "half_day_time": "8:50–9:15", "whole_day_time": "9:00–9:35", "subject": "1B PHum", "is_non_class": false}, {"day": "VII", "half_day_time": "8:50–9:15", "whole_day_time": "9:00–9:35", "subject": "1B SCI", "is_non_class": false}, {"day": "I", "half_day_time": "9:15–9:30", "whole_day_time": "9:35–9:50", "subject": "Recess", "is_non_class": true}, {"day": "II", "half_day_time": "9:15–9:30", "whole_day_time": "9:35–9:50", "subject": "Recess", "is_non_class": true}, {"day": "III", "half_day_time": "9:15–9:30", "whole_day_time": "9:35–9:50", "subject": "Recess", "is_non_class": true}, {"day": "IV", "half_day_time": "9:15–9:30", "whole_day_time": "9:35–9:50", "subject": "Recess", "is_non_class": true}, {"day": "V", "half_day_time": "9:15–9:30", "whole_day_time": "9:35–9:50", "subject": "Recess", "is_non_class": true}, {"day": "VI", "half_day_time": "9:15–9:30", "whole_day_time": "9:35–9:50", "subject": "Recess", "is_non_class": true}, {"day": "VII", "half_day_time": "9:15–9:30", "whole_day_time": "9:35–9:50", "subject": "Recess", "is_non_class": true}, {"day": "I", "half_day_time": "9:30–9:55", "whole_day_time": "9:50–10:25", "subject": "1B MATH", "is_non_class": false}, {"day": "II", "half_day_time": "9:30–9:55", "whole_day_time": "9:50–10:25", "subject": "1B CHI", "is_non_class": false}, {"day": "III", "half_day_time": "9:30–9:55", "whole_day_time": "9:50–10:25", "subject": "1B ENG", "is_non_class": false}, {"day": "IV", "half_day_time": "9:30–9:55", "whole_day_time": "9:50–10:25", "subject": "1B CHI", "is_non_class": false}, {"day": "V", "half_day_time": "9:30–9:55", "whole_day_time": "9:50–10:25", "subject": "1B MATH", "is_non_class": false}, {"day": "VI", "half_day_time": "9:30–9:55", "whole_day_time": "9:50–10:25", "subject": "1B MATH", "is_non_class": false}, {"day": "VII", "half_day_time": "9:30–9:55", "whole_day_time": "9:50–10:25", "subject": "1B MUS", "is_non_class": false}, {"day": "I", "half_day_time": "9:55–10:20", "whole_day_time": "10:25–11:00", "subject": "1B MATH", "is_non_class": false}, {"day": "II", "half_day_time": "9:55–10:20", "whole_day_time": "10:25–11:00", "subject": "1B CHI", "is_non_class": false}, {"day": "III", "half_day_time": "9:55–10:20", "whole_day_time": "10:25–11:00", "subject": "1B ENG", "is_non_class": false}, {"day": "IV", "half_day_time": "9:55–10:20", "whole_day_time": "10:25–11:00", "subject": "1B CHI", "is_non_class": false}, {"day": "V", "half_day_time": "9:55–10:20", "whole_day_time": "10:25–11:00", "subject": "1B VA", "is_non_class": false}, {"day": "VI", "half_day_time": "9:55–10:20", "whole_day_time": "10:25–11:00", "subject": "1B ENG", "is_non_class": false}, {"day": "VII", "half_day_time": "9:55–10:20", "whole_day_time": "10:25–11:00", "subject": "1B MATH", "is_non_class": false}, {"day": "I", "half_day_time": "10:20–10:30", "whole_day_time": "11:00–11:10", "subject": "Break", "is_non_class": true}, {"day": "II", "half_day_time": "10:20–10:30", "whole_day_time": "11:00–11:10", "subject": "Break", "is_non_class": true}, {"day": "III", "half_day_time": "10:20–10:30", "whole_day_time": "11:00–11:10", "subject": "Break", "is_non_class": true}, {"day": "IV", "half_day_time": "10:20–10:30", "whole_day_time": "11:00–11:10", "subject": "Break", "is_non_class": true}, {"day": "V", "half_day_time": "10:20–10:30", "whole_day_time": "11:00–11:10", "subject": "Break", "is_non_class": true}, {"day": "VI", "half_day_time": "10:20–10:30", "whole_day_time": "11:00–11:10", "subject": "Break", "is_non_class": true}, {"day": "VII", "half_day_time": "10:20–10:30", "whole_day_time": "11:00–11:10", "subject": "Break", "is_non_class": true}, {"day": "I", "half_day_time": "10:30–10:55", "whole_day_time": "11:10–11:45", "subject": "1B ENG", "is_non_class": false}, {"day": "II", "half_day_time": "10:30–10:55", "whole_day_time": "11:10–11:45", "subject": "1B RE", "is_non_class": false}, {"day": "III", "half_day_time": "10:30–10:55", "whole_day_time": "11:10–11:45", "subject": "1B CHI", "is_non_class": false}, {"day": "IV", "half_day_time": "10:30–10:55", "whole_day_time": "11:10–11:45", "subject": "1B MATH", "is_non_class": false}, {"day": "V", "half_day_time": "10:30–10:55", "whole_day_time": "11:10–11:45", "subject": "1B Reading", "is_non_class": false}, {"day": "VI", "half_day_time": "10:30–10:55", "whole_day_time": "11:10–11:45", "subject": "1B PE", "is_non_class": false}, {"day": "VII", "half_day_time": "10:30–10:55", "whole_day_time": "11:10–11:45", "subject": "1B ENG", "is_non_class": false}, {"day": "I", "half_day_time": "10:55–11:20", "whole_day_time": "11:45–12:20", "subject": "1B ENG", "is_non_class": false}, {"day": "II", "half_day_time": "10:55–11:20", "whole_day_time": "11:45–12:20", "subject": "1B MATH", "is_non_class": false}, {"day": "III", "half_day_time": "10:55–11:20", "whole_day_time": "11:45–12:20", "subject": "1B CHI", "is_non_class": false}, {"day": "IV", "half_day_time": "10:55–11:20", "whole_day_time": "11:45–12:20", "subject": "1B ENG", "is_non_class": false}, {"day": "V", "half_day_time": "10:55–11:20", "whole_day_time": "11:45–12:20", "subject": "1B Reading", "is_non_class": false}, {"day": "VI", "half_day_time": "10:55–11:20", "whole_day_time": "11:45–12:20", "subject": "1B PE", "is_non_class": false}, {"day": "VII", "half_day_time": "10:55–11:20", "whole_day_time": "11:45–12:20", "subject": "1B ENG", "is_non_class": false}, {"day": "I", "half_day_time": "11:20–11:30 Break", "whole_day_time": "12:20–12:50", "subject": "Lunch", "is_non_class": true}, {"day": "II", "half_day_time": "11:20–11:30 Break", "whole_day_time": "12:20–12:50", "subject": "Lunch", "is_non_class": true}, {"day": "III", "half_day_time": "11:20–11:30 Break", "whole_day_time": "12:20–12:50", "subject": "Lunch", "is_non_class": true}, {"day": "IV", "half_day_time": "11:20–11:30 Break", "whole_day_time": "12:20–12:50", "subject": "Lunch", "is_non_class": true}, {"day": "V", "half_day_time": "11:20–11:30 Break", "whole_day_time": "12:20–12:50", "subject": "Lunch", "is_non_class": true}, {"day": "VI", "half_day_time": "11:20–11:30 Break", "whole_day_time": "12:20–12:50", "subject": "Lunch", "is_non_class": true}, {"day": "VII", "half_day_time": "11:20–11:30 Break", "whole_day_time": "12:20–12:50", "subject": "Lunch", "is_non_class": true}, {"day": "I", "half_day_time": "", "whole_day_time": "12:50–1:20", "subject": "Lunch Break", "is_non_class": true}, {"day": "II", "half_day_time": "", "whole_day_time": "12:50–1:20", "subject": "Lunch Break", "is_non_class": true}, {"day": "III", "half_day_time": "", "whole_day_time": "12:50–1:20", "subject": "Lunch Break", "is_non_class": true}, {"day": "IV", "half_day_time": "", "whole_day_time": "12:50–1:20", "subject": "Lunch Break", "is_non_class": true}, {"day": "V", "half_day_time": "", "whole_day_time": "12:50–1:20", "subject": "Lunch Break", "is_non_class": true}, {"day": "VI", "half_day_time": "", "whole_day_time": "12:50–1:20", "subject": "Lunch Break", "is_non_class": true}, {"day": "VII", "half_day_time": "", "whole_day_time": "12:50–1:20", "subject": "Lunch Break", "is_non_class": true}, {"day": "I", "half_day_time": "11:30–11:55", "whole_day_time": "1:20–1:55", "subject": "1B ICT (1B LIB)", "is_non_class": false}, {"day": "II", "half_day_time": "11:30–11:55", "whole_day_time": "1:20–1:55", "subject": "1B ENG", "is_non_class": false}, {"day": "III", "half_day_time": "11:30–11:55", "whole_day_time": "1:20–1:55", "subject": "1B MATH", "is_non_class": false}, {"day": "IV", "half_day_time": "11:30–11:55", "whole_day_time": "1:20–1:55", "subject": "1B ICT", "is_non_class": false}, {"day": "V", "half_day_time": "11:30–11:55", "whole_day_time": "1:20–1:55", "subject": "1B RE", "is_non_class": false}, {"day": "VI", "half_day_time": "11:30–11:55", "whole_day_time": "1:20–1:55", "subject": "1B CHI", "is_non_class": false}, {"day": "VII", "half_day_time": "11:30–11:55", "whole_day_time": "1:20–1:55", "subject": "1B CHI", "is_non_class": false}, {"day": "I", "half_day_time": "11:55–12:20", "whole_day_time": "1:55–2:30", "subject": "1B PHum", "is_non_class": false}, {"day": "II", "half_day_time": "11:55–12:20", "whole_day_time": "1:55–2:30", "subject": "IL", "is_non_class": false}, {"day": "III", "half_day_time": "11:55–12:20", "whole_day_time": "1:55–2:30", "subject": "1B PE", "is_non_class": false}, {"day": "IV", "half_day_time": "11:55–12:20", "whole_day_time": "1:55–2:30", "subject": "IL", "is_non_class": false}, {"day": "V", "half_day_time": "11:55–12:20", "whole_day_time": "1:55–2:30", "subject": "1B MUS", "is_non_class": false}, {"day": "VI", "half_day_time": "11:55–12:20", "whole_day_time": "1:55–2:30", "subject": "IL", "is_non_class": false}, {"day": "VII", "half_day_time": "11:55–12:20", "whole_day_time": "1:55–2:30", "subject": "1B CHI", "is_non_class": false}, {"day": "I", "half_day_time": "12:20–12:50", "whole_day_time": "2:30–3:00", "subject": "1B PHum", "is_non_class": false}, {"day": "II", "half_day_time": "12:20–12:50", "whole_day_time": "2:30–3:00", "subject": "IL", "is_non_class": false}, {"day": "III", "half_day_time": "12:20–12:50", "whole_day_time": "2:30–3:00", "subject": "Tutorial", "is_non_class": false}, {"day": "IV", "half_day_time": "12:20–12:50", "whole_day_time": "2:30–3:00", "subject": "IL", "is_non_class": false}, {"day": "V", "half_day_time": "12:20–12:50", "whole_day_time": "2:30–3:00", "subject": "Tutorial", "is_non_class": false}, {"day": "VI", "half_day_time": "12:20–12:50", "whole_day_time": "2:30–3:00", "subject": "IL", "is_non_class": false}, {"day": "VII", "half_day_time": "12:20–12:50", "whole_day_time": "2:30–3:00", "subject": "Tutorial", "is_non_class": false}];
+    const dayCycleData = [{"date": "2026-09-07", "day_cycle": "I"}, {"date": "2026-09-08", "day_cycle": "II"}, {"date": "2026-09-09", "day_cycle": "III"}, {"date": "2026-09-10", "day_cycle": "IV"}, {"date": "2026-09-11", "day_cycle": "V"}, {"date": "2026-09-14", "day_cycle": "VI"}, {"date": "2026-09-15", "day_cycle": "VII"}, {"date": "2026-09-16", "day_cycle": "I"}, {"date": "2026-09-17", "day_cycle": "II"}, {"date": "2026-09-18", "day_cycle": "III"}, {"date": "2026-09-21", "day_cycle": "IV"}, {"date": "2026-09-22", "day_cycle": "V"}, {"date": "2026-09-23", "day_cycle": "VI"}, {"date": "2026-09-24", "day_cycle": "VII"}, {"date": "2026-09-25", "day_cycle": "I"}, {"date": "2026-09-28", "day_cycle": "II"}, {"date": "2026-09-29", "day_cycle": "III"}, {"date": "2026-09-30", "day_cycle": "IV"}, {"date": "2026-10-02", "day_cycle": "V"}, {"date": "2026-10-05", "day_cycle": "VI"}, {"date": "2026-10-06", "day_cycle": "VII"}, {"date": "2026-10-07", "day_cycle": "I"}, {"date": "2026-10-08", "day_cycle": "II"}, {"date": "2026-10-09", "day_cycle": "III"}, {"date": "2026-10-12", "day_cycle": "IV"}, {"date": "2026-10-13", "day_cycle": "V"}, {"date": "2026-10-14", "day_cycle": "VI"}, {"date": "2026-10-15", "day_cycle": "VII"}, {"date": "2026-10-16", "day_cycle": "I"}, {"date": "2026-10-19", "day_cycle": "II"}, {"date": "2026-10-20", "day_cycle": "III"}, {"date": "2026-10-21", "day_cycle": "IV"}, {"date": "2026-10-22", "day_cycle": "V"}, {"date": "2026-10-23", "day_cycle": "VI"}, {"date": "2026-10-26", "day_cycle": "V"}, {"date": "2026-10-27", "day_cycle": "VI"}, {"date": "2026-10-28", "day_cycle": "VII"}, {"date": "2026-10-29", "day_cycle": "I"}, {"date": "2026-10-30", "day_cycle": "II"}, {"date": "2026-11-02", "day_cycle": "III"}, {"date": "2026-11-03", "day_cycle": "IV"}, {"date": "2026-11-04", "day_cycle": "V"}, {"date": "2026-11-05", "day_cycle": "VI"}, {"date": "2026-11-06", "day_cycle": "VII"}, {"date": "2026-11-16", "day_cycle": "I"}, {"date": "2026-11-17", "day_cycle": "II"}, {"date": "2026-11-18", "day_cycle": "III"}, {"date": "2026-11-19", "day_cycle": "IV"}, {"date": "2026-11-20", "day_cycle": "V"}, {"date": "2026-11-23", "day_cycle": "VI"}, {"date": "2026-11-24", "day_cycle": "VII"}, {"date": "2026-11-25", "day_cycle": "I"}, {"date": "2026-11-26", "day_cycle": "II"}, {"date": "2026-11-27", "day_cycle": "III"}, {"date": "2026-11-30", "day_cycle": "IV"}, {"date": "2027-01-04", "day_cycle": "V"}, {"date": "2027-01-05", "day_cycle": "VI"}, {"date": "2027-01-06", "day_cycle": "VII"}, {"date": "2027-01-07", "day_cycle": "I"}, {"date": "2027-01-08", "day_cycle": "II"}, {"date": "2027-01-11", "day_cycle": "III"}, {"date": "2027-01-12", "day_cycle": "IV"}, {"date": "2027-01-13", "day_cycle": "V"}, {"date": "2027-01-14", "day_cycle": "VI"}, {"date": "2027-01-15", "day_cycle": "VII"}, {"date": "2027-01-18", "day_cycle": "I"}, {"date": "2027-01-19", "day_cycle": "II"}, {"date": "2027-01-20", "day_cycle": "III"}, {"date": "2027-01-21", "day_cycle": "IV"}, {"date": "2027-01-22", "day_cycle": "V"}, {"date": "2027-01-25", "day_cycle": "VI"}, {"date": "2027-01-26", "day_cycle": "VII"}, {"date": "2027-01-27", "day_cycle": "I"}, {"date": "2027-01-28", "day_cycle": "II"}, {"date": "2027-01-29", "day_cycle": "III"}, {"date": "2027-02-01", "day_cycle": "IV"}, {"date": "2027-02-02", "day_cycle": "V"}, {"date": "2027-02-16", "day_cycle": "VI"}, {"date": "2027-02-17", "day_cycle": "VII"}, {"date": "2027-02-18", "day_cycle": "I"}, {"date": "2027-02-19", "day_cycle": "II"}, {"date": "2027-02-22", "day_cycle": "III"}, {"date": "2027-02-23", "day_cycle": "IV"}, {"date": "2027-02-24", "day_cycle": "V"}, {"date": "2027-02-25", "day_cycle": "VI"}, {"date": "2027-02-26", "day_cycle": "VII"}, {"date": "2027-03-01", "day_cycle": "I"}, {"date": "2027-03-02", "day_cycle": "II"}, {"date": "2027-03-03", "day_cycle": "III"}, {"date": "2027-03-04", "day_cycle": "IV"}, {"date": "2027-03-05", "day_cycle": "V"}, {"date": "2027-03-15", "day_cycle": "VI"}, {"date": "2027-03-16", "day_cycle": "VII"}, {"date": "2027-03-17", "day_cycle": "I"}, {"date": "2027-03-18", "day_cycle": "II"}, {"date": "2027-03-19", "day_cycle": "III"}, {"date": "2027-03-22", "day_cycle": "IV"}, {"date": "2027-03-23", "day_cycle": "V"}, {"date": "2027-04-06", "day_cycle": "VI"}, {"date": "2027-04-07", "day_cycle": "VII"}, {"date": "2027-04-08", "day_cycle": "I"}, {"date": "2027-04-09", "day_cycle": "II"}, {"date": "2027-04-12", "day_cycle": "III"}, {"date": "2027-04-13", "day_cycle": "IV"}, {"date": "2027-04-14", "day_cycle": "V"}, {"date": "2027-04-15", "day_cycle": "VI"}, {"date": "2027-04-16", "day_cycle": "VII"}, {"date": "2027-04-19", "day_cycle": "I"}, {"date": "2027-04-20", "day_cycle": "II"}, {"date": "2027-04-21", "day_cycle": "III"}, {"date": "2027-04-22", "day_cycle": "IV"}, {"date": "2027-04-23", "day_cycle": "V"}, {"date": "2027-04-26", "day_cycle": "VI"}, {"date": "2027-04-27", "day_cycle": "VII"}, {"date": "2027-04-28", "day_cycle": "I"}, {"date": "2027-04-29", "day_cycle": "II"}, {"date": "2027-04-30", "day_cycle": "III"}, {"date": "2027-05-03", "day_cycle": "IV"}, {"date": "2027-05-04", "day_cycle": "V"}, {"date": "2027-05-05", "day_cycle": "VI"}, {"date": "2027-05-07", "day_cycle": "VII"}, {"date": "2027-05-10", "day_cycle": "I"}, {"date": "2027-05-11", "day_cycle": "II"}, {"date": "2027-05-12", "day_cycle": "III"}, {"date": "2027-05-14", "day_cycle": "IV"}, {"date": "2027-05-17", "day_cycle": "V"}, {"date": "2027-05-18", "day_cycle": "VI"}, {"date": "2027-05-19", "day_cycle": "VII"}, {"date": "2027-05-20", "day_cycle": "I"}, {"date": "2027-05-21", "day_cycle": "II"}, {"date": "2027-05-24", "day_cycle": "III"}, {"date": "2027-05-25", "day_cycle": "IV"}, {"date": "2027-05-26", "day_cycle": "V"}, {"date": "2027-05-27", "day_cycle": "VI"}, {"date": "2027-05-28", "day_cycle": "VII"}, {"date": "2027-06-07", "day_cycle": "I"}, {"date": "2027-06-08", "day_cycle": "II"}, {"date": "2027-06-10", "day_cycle": "III"}, {"date": "2027-06-11", "day_cycle": "IV"}, {"date": "2027-06-14", "day_cycle": "V"}, {"date": "2027-06-15", "day_cycle": "VI"}, {"date": "2027-06-16", "day_cycle": "VII"}, {"date": "2027-06-17", "day_cycle": "I"}, {"date": "2027-06-18", "day_cycle": "II"}, {"date": "2027-06-21", "day_cycle": "III"}, {"date": "2027-06-22", "day_cycle": "IV"}, {"date": "2027-06-23", "day_cycle": "V"}, {"date": "2027-06-24", "day_cycle": "VI"}, {"date": "2027-06-25", "day_cycle": "VII"}, {"date": "2027-06-28", "day_cycle": "I"}, {"date": "2027-06-29", "day_cycle": "II"}, {"date": "2027-06-30", "day_cycle": "III"}, {"date": "2027-07-02", "day_cycle": "IV"}, {"date": "2027-07-05", "day_cycle": "V"}, {"date": "2027-07-06", "day_cycle": "VI"}, {"date": "2027-07-07", "day_cycle": "VII"}, {"date": "2027-07-08", "day_cycle": "I"}];
+    const cycleMap = new Map(dayCycleData.map(x => [x.date, x.day_cycle]));
+
+    const lessonsEl = document.getElementById('lessons');
+    const dateInput = document.getElementById('dateInput');
+    const dayBadge = document.getElementById('dayBadge');
+    const dateText = document.getElementById('dateText');
+    const peText = document.getElementById('peText');
+    const readingBook = document.getElementById('readingBook');
+
+    const NON_CLASS = new Set(['Reading Session', 'Assembly', 'Recess', 'Break', 'Lunch', 'Lunch Break']);
+
+    const SUBJECT_STYLES = {
+      ENG: { bg: '#dceeff', fg: '#0f4d7a', tag: 'ENG' },
+      CHI: { bg: '#ffe4d6', fg: '#8a3d12', tag: 'CHI' },
+      MATH: { bg: '#efe3ff', fg: '#5c2a96', tag: 'MATH' },
+      SCI: { bg: '#dff6e4', fg: '#23663a', tag: 'SCI' },
+      STEM: { bg: '#d9f1f2', fg: '#175f64', tag: 'STEM' },
+      PE: { bg: '#ffe3ec', fg: '#9b2852', tag: 'PE' },
+      MUS: { bg: '#fff1c9', fg: '#8a6500', tag: 'MUS' },
+      VA: { bg: '#ffe0f4', fg: '#8d2c73', tag: 'VA' },
+      CCL: { bg: '#e7ebff', fg: '#3147a1', tag: 'CCL' },
+      IT: { bg: '#dde7ff', fg: '#3256a8', tag: 'IT' },
+      PSD: { bg: '#e4f3df', fg: '#3b6b21', tag: 'PSD' },
+      GE: { bg: '#ffe9cc', fg: '#965b00', tag: 'GE' },
+      PUT: { bg: '#e2f0ff', fg: '#215f8f', tag: 'PUT' }
+    };
+
+    const weekChar = d => ['日', '一', '二', '三', '四', '五', '六'][d.getDay()];
+    const fmtZh = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')} · 星期${weekChar(d)}`;
+    const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    function readingBookForDay(day) {
+      if (['I', 'II', 'III'].includes(day)) return '英文';
+      if (['IV', 'V', 'VI'].includes(day)) return '中文';
+      if (day === 'VII') return '英文/中文';
+      return '—';
+    }
+
+    function normalizeSubject(s) {
+      return String(s || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function shortSubjectName(subject) {
+      const s = normalizeSubject(subject);
+      if (NON_CLASS.has(s)) return s;
+      return s.replace(/^1B\s+/, '');
+    }
+
+    function detectSubjectKey(subject) {
+      const s = shortSubjectName(subject).toUpperCase();
+      const keys = Object.keys(SUBJECT_STYLES);
+      return keys.find(k => s.includes(k)) || null;
+    }
+
+    function getLessonStyle(subject, isNonClass) {
+      if (isNonClass) return null;
+      const key = detectSubjectKey(subject);
+      return key ? SUBJECT_STYLES[key] : { bg: '#e9ecef', fg: '#495057', tag: shortSubjectName(subject) };
+    }
+
+    function getLessonsForDay(day) {
+      return timetableData.filter(x => x.day === day && normalizeSubject(x.subject) !== 'IL');
+    }
+
+    function peLabel(date, day) {
+      const d = new Date(date + 'T00:00:00');
+      return `下一次 PE 堂：${date} (${weekChar(d)}) · Day ${day}`;
+    }
+
+    function findNextPe(fromDate) {
+      const sorted = [...dayCycleData].sort((a, b) => a.date.localeCompare(b.date));
+      const target = sorted.find(x => x.date >= fromDate && ['III', 'VI'].includes(x.day_cycle));
+      return target ? peLabel(target.date, target.day_cycle) : '下一次 PE 堂：未找到之後的 PE 日期';
+    }
+
+    function findNextSchoolDay(fromDate, includeStart = false) {
+      const sorted = [...dayCycleData].sort((a, b) => a.date.localeCompare(b.date));
+      const target = sorted.find(x => includeStart ? x.date >= fromDate : x.date > fromDate);
+      return target ? target.date : null;
+    }
+
+    function render(dateStr) {
+      const day = cycleMap.get(dateStr);
+      const d = new Date(dateStr + 'T00:00:00');
+
+      dateInput.value = dateStr;
+      dayBadge.textContent = day ? `Day ${day}` : '假期 / 無 Day Cycle';
+      dateText.textContent = fmtZh(d);
+      peText.textContent = day ? findNextPe(dateStr) : '下一次 PE 堂：未找到之後的 PE 日期';
+      readingBook.textContent = `Reading Book：${readingBookForDay(day)}`;
+      lessonsEl.innerHTML = '';
+
+      if (!day) {
+        lessonsEl.innerHTML = '<div class="empty">這日沒有課堂資料。</div>';
+        return;
+      }
+
+      const lessons = getLessonsForDay(day);
+      if (!lessons.length) {
+        lessonsEl.innerHTML = '<div class="empty">這個 Day Cycle 沒有課堂資料。</div>';
+        return;
+      }
+
+      lessons.forEach(item => {
+        const div = document.createElement('article');
+        div.className = 'lesson' + (item.is_non_class ? ' non-class' : '');
+        const label = shortSubjectName(item.subject);
+        const style = getLessonStyle(item.subject, item.is_non_class);
+
+        if (style) {
+          div.style.background = style.bg;
+          div.style.color = style.fg;
+          div.innerHTML = `
+            <div class="time">${item.whole_day_time || '時間待定'}</div>
+            <div class="subject">${label}</div>
+            <div class="subject-tag">${style.tag}</div>
+          `;
+        } else {
+          div.innerHTML = `
+            <div class="time">${item.whole_day_time || '時間待定'}</div>
+            <div class="subject">${label}</div>
+          `;
+        }
+
+        lessonsEl.appendChild(div);
+      });
+    }
+
+    const today = iso(new Date());
+    const defaultDate = cycleMap.has(today)
+      ? today
+      : (findNextSchoolDay(today, true) || dayCycleData[0]?.date || today);
+
+    render(defaultDate);
+
+    document.getElementById('goBtn').onclick = () => render(dateInput.value || defaultDate);
+    document.getElementById('todayBtn').onclick = () => render(today);
+    document.getElementById('tomorrowBtn').onclick = () => {
+      const d = new Date();
+      d.setDate(d.getDate() + 1);
+      const t = iso(d);
+      render(cycleMap.has(t) ? t : (findNextSchoolDay(t, true) || t));
+    };
+    document.getElementById('nextSchoolBtn').onclick = () => {
+      const n = findNextSchoolDay(iso(new Date()), false);
+      if (n) render(n);
+    };
+    document.getElementById('nextPeBtn').onclick = () => {
+      const sorted = [...dayCycleData].sort((a, b) => a.date.localeCompare(b.date));
+      const todayIso = iso(new Date());
+      const n = sorted.find(x => x.date >= todayIso && ['III', 'VI'].includes(x.day_cycle));
+      if (n) render(n.date);
+    };
+
+    let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    document.getElementById('themeBtn').onclick = () => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    };
+  </script>
+</body>
+</html>
