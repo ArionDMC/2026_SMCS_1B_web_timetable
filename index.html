@@ -17,6 +17,8 @@
       --shadow: 0 8px 28px rgba(28, 24, 16, 0.08);
       --nav: rgba(252, 251, 248, 0.9);
       --subject-default: #ece7de;
+      --sticky: #fcfbf8;
+      --sticky-head: #f0ede6;
     }
     [data-theme="dark"] {
       --bg: #171614;
@@ -29,133 +31,77 @@
       --primary-soft: rgba(255,191,71,0.18);
       --shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
       --nav: rgba(28, 27, 25, 0.92);
-      --subject-default: #2c2a26;
+      --subject-default: #3a362f;
+      --sticky: #201f1d;
+      --sticky-head: #2a2825;
     }
     * { box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.45;
+    body { margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:var(--bg); color:var(--text); }
+    button { font: inherit; }
+    .app { max-width: 820px; margin: 0 auto; min-height: 100dvh; padding: 20px 16px 96px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; }
+    .title-wrap h1 { margin:0; font-size:1.7rem; line-height:1.05; }
+    .title-wrap p { margin:6px 0 0; color:var(--muted); font-size:0.96rem; }
+    .theme-toggle { min-width:46px; min-height:46px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:var(--shadow); }
+    .hero-card { background:linear-gradient(180deg,color-mix(in srgb, var(--primary) 34%, var(--surface)),color-mix(in srgb, var(--primary) 18%, var(--surface-2))); border:1px solid color-mix(in srgb, var(--primary) 34%, var(--border)); border-radius:24px; padding:18px; box-shadow:var(--shadow); margin-bottom:18px; }
+    .hero-top { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; margin-bottom:14px; }
+    .eyebrow { display:inline-flex; padding:6px 10px; border-radius:999px; background:var(--primary-soft); color:#7a4b00; font-weight:800; font-size:0.82rem; margin-bottom:10px; }
+    [data-theme="dark"] .eyebrow { color:#ffd98b; }
+    .hero-date { font-size:1.28rem; font-weight:800; margin:0 0 4px; }
+    .hero-sub { margin:0; color:var(--muted); }
+    .day-chip { white-space:nowrap; border-radius:16px; background:rgba(0,0,0,0.72); color:#fff8ea; padding:12px 14px; font-weight:800; }
+    .quickbar { display:flex; gap:10px; overflow:auto; }
+    .quickbar button { min-height:44px; border-radius:14px; border:1px solid var(--border); background:rgba(255,255,255,0.55); color:var(--text); padding:12px 14px; white-space:nowrap; }
+    .panel { display:none; margin-top:8px; }
+    .panel.active { display:block; }
+    .section-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:18px 2px 12px; }
+    .section-head h2 { margin:0; font-size:1.18rem; }
+    .section-head p { margin:0; color:var(--muted); font-size:0.9rem; }
+    .timetable { display:grid; gap:12px; }
+    .lesson { border-radius:22px; padding:14px 14px 14px 16px; border:1px solid rgba(0,0,0,0.04); box-shadow:var(--shadow); color:#181612; }
+    .lesson-inner { display:grid; grid-template-columns:108px 1fr auto; gap:12px; align-items:center; }
+    .time { font-size:0.95rem; color:rgba(24,22,18,0.72); font-variant-numeric:tabular-nums; }
+    .subject { font-weight:900; font-size:1.1rem; }
+    .tag { padding:10px 14px; border-radius:999px; background:rgba(255,255,255,0.62); font-weight:800; min-width:66px; text-align:center; }
+    .empty { border:1px dashed var(--border); border-radius:20px; padding:22px 16px; text-align:center; color:var(--muted); background:var(--surface); }
+    .days-table-wrap { border:1px solid var(--border); background:var(--surface); border-radius:20px; overflow:auto; box-shadow:var(--shadow); }
+    .days-table { width:100%; min-width:860px; border-collapse:separate; border-spacing:0; }
+    .days-table th, .days-table td { padding:12px 14px; border-bottom:1px solid var(--border); text-align:left; white-space:nowrap; }
+    .days-table thead th { background:var(--sticky-head); font-size:0.92rem; position:sticky; top:0; z-index:2; }
+    .time-col { position:sticky; left:0; z-index:1; background:var(--sticky); color:var(--muted); font-variant-numeric:tabular-nums; box-shadow:6px 0 10px rgba(0,0,0,0.04); }
+    .days-table thead .time-col { z-index:3; background:var(--sticky-head); }
+    .subject-cell { font-weight:800; color:#181612; border-left:1px solid rgba(0,0,0,0.04); }
+    .calendar-shell { border:1px solid var(--border); background:var(--surface); border-radius:22px; padding:16px; box-shadow:var(--shadow); }
+    .calendar-toolbar { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px; }
+    .calendar-toolbar h3 { margin:0; font-size:1.04rem; }
+    .month-nav { display:flex; gap:8px; }
+    .month-nav button { min-width:42px; min-height:42px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); }
+    .month-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:8px; }
+    .weekday { text-align:center; color:var(--muted); font-size:0.8rem; font-weight:800; padding-bottom:4px; }
+    .day-btn {
+      min-height:84px; border-radius:16px; border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+      padding:10px 8px; text-align:left; display:flex; flex-direction:column; justify-content:space-between;
     }
-    button, input { font: inherit; }
-    .app {
-      max-width: 760px;
-      margin: 0 auto;
-      min-height: 100dvh;
-      padding: 20px 16px 96px;
-    }
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .title-wrap h1 { margin: 0; font-size: 1.7rem; line-height: 1.05; }
-    .title-wrap p { margin: 6px 0 0; color: var(--muted); font-size: 0.96rem; }
-    .theme-toggle {
-      min-width: 46px; min-height: 46px; border-radius: 999px; border: 1px solid var(--border);
-      background: var(--surface); color: var(--text); display: grid; place-items: center; box-shadow: var(--shadow);
-    }
-    .hero-card {
-      background: linear-gradient(180deg,
-        color-mix(in srgb, var(--primary) 34%, var(--surface)),
-        color-mix(in srgb, var(--primary) 18%, var(--surface-2))
-      );
-      border: 1px solid color-mix(in srgb, var(--primary) 34%, var(--border));
-      border-radius: 24px; padding: 18px; box-shadow: var(--shadow); margin-bottom: 18px;
-    }
-    .hero-top {
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 14px;
-    }
-    .eyebrow {
-      display: inline-flex; padding: 6px 10px; border-radius: 999px; background: var(--primary-soft);
-      color: #7a4b00; font-weight: 700; font-size: 0.82rem; margin-bottom: 10px;
-    }
-    [data-theme="dark"] .eyebrow { color: #ffd98b; }
-    .hero-date { font-size: 1.28rem; font-weight: 800; margin: 0 0 4px; }
-    .hero-sub { margin: 0; color: var(--muted); }
-    .day-chip {
-      white-space: nowrap; border-radius: 16px; background: rgba(0,0,0,0.72); color: #fff8ea;
-      padding: 12px 14px; font-weight: 800; font-size: 0.98rem;
-    }
-    .quickbar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; margin-top: 8px; }
-    .quickbar button {
-      border: 1px solid var(--border); background: rgba(255,255,255,0.55); color: var(--text);
-      border-radius: 14px; padding: 12px 14px; white-space: nowrap; min-height: 44px;
-    }
-    .panel { display: none; margin-top: 8px; }
-    .panel.active { display: block; }
-    .section-head {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 18px 2px 12px;
-    }
-    .section-head h2 { margin: 0; font-size: 1.18rem; }
-    .section-head p { margin: 0; color: var(--muted); font-size: 0.9rem; }
-    .date-picker {
-      width: 100%; border-radius: 16px; border: 1px solid var(--border); background: var(--surface);
-      color: var(--text); padding: 14px 16px; min-height: 48px; margin-bottom: 12px;
-    }
-    .calendar-actions { margin-top: 12px; display: flex; gap: 10px; }
-    .calendar-actions button {
-      min-height: 46px; border-radius: 14px; border: 1px solid var(--border); padding: 12px 16px;
-      background: var(--text); color: var(--bg); font-weight: 800;
-    }
-    .timetable { display: grid; gap: 12px; }
-    .lesson {
-      border-radius: 22px; padding: 14px 14px 14px 16px; border: 1px solid rgba(0,0,0,0.04);
-      box-shadow: var(--shadow); color: #181612;
-    }
-    .lesson-inner { display: grid; grid-template-columns: 108px 1fr auto; gap: 12px; align-items: center; }
-    .time { font-size: 0.95rem; color: rgba(24, 22, 18, 0.72); font-variant-numeric: tabular-nums; }
-    .subject { font-weight: 900; font-size: 1.1rem; letter-spacing: 0.01em; }
-    .tag {
-      padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,0.62); font-weight: 800;
-      font-size: 0.95rem; min-width: 66px; text-align: center;
-    }
-    .empty {
-      border: 1px dashed var(--border); border-radius: 20px; padding: 22px 16px; text-align: center;
-      color: var(--muted); background: var(--surface);
-    }
-    .days-table-wrap {
-      border: 1px solid var(--border); background: var(--surface); border-radius: 20px; overflow: auto; box-shadow: var(--shadow);
-    }
-    .days-table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0; }
-    .days-table th, .days-table td {
-      padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap;
-    }
-    .days-table thead th {
-      background: var(--surface-2); font-size: 0.92rem; position: sticky; top: 0; z-index: 2;
-    }
-    .days-table tbody tr:last-child td { border-bottom: 0; }
-    .time-col {
-      color: var(--muted); font-variant-numeric: tabular-nums; position: sticky; left: 0; z-index: 1;
-      background: var(--surface); box-shadow: 6px 0 10px rgba(0,0,0,0.04);
-    }
-    .days-table thead .time-col { z-index: 3; background: var(--surface-2); }
-    .subject-cell { font-weight: 800; color: #181612; border-left: 1px solid rgba(0,0,0,0.04); }
-    .calendar-card {
-      border: 1px solid var(--border); background: var(--surface); border-radius: 20px; padding: 16px; box-shadow: var(--shadow);
-    }
-    .calendar-note { margin: 10px 2px 0; color: var(--muted); font-size: 0.92rem; }
-    .nav {
-      position: fixed; left: 50%; bottom: max(12px, env(safe-area-inset-bottom)); transform: translateX(-50%);
-      width: min(760px, calc(100vw - 24px)); background: var(--nav); backdrop-filter: blur(16px); border: 1px solid var(--border);
-      box-shadow: var(--shadow); border-radius: 24px; padding: 8px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; z-index: 10;
-    }
-    .nav button {
-      min-height: 52px; border-radius: 18px; border: 0; color: var(--muted); background: transparent; font-weight: 800; padding: 10px 8px;
-    }
-    .nav button.active { background: var(--text); color: var(--bg); }
+    .day-btn.muted { opacity:0.42; }
+    .day-btn.active { outline:2px solid var(--primary); background:color-mix(in srgb, var(--primary) 18%, var(--surface)); }
+    .day-btn.school { border-color: color-mix(in srgb, var(--primary) 34%, var(--border)); }
+    .day-num { font-weight:900; }
+    .cycle-badge { align-self:flex-start; padding:4px 8px; border-radius:999px; background:var(--primary-soft); color:#7a4b00; font-size:0.74rem; font-weight:900; }
+    [data-theme="dark"] .cycle-badge { color:#ffd98b; }
+    .calendar-note { margin:12px 2px 0; color:var(--muted); font-size:0.92rem; }
+    .nav { position:fixed; left:50%; bottom:max(12px, env(safe-area-inset-bottom)); transform:translateX(-50%); width:min(760px, calc(100vw - 24px)); background:var(--nav); backdrop-filter:blur(16px); border:1px solid var(--border); box-shadow:var(--shadow); border-radius:24px; padding:8px; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; z-index:10; }
+    .nav button { min-height:52px; border-radius:18px; border:0; color:var(--muted); background:transparent; font-weight:800; padding:10px 8px; }
+    .nav button.active { background:var(--text); color:var(--bg); }
     @media (max-width: 560px) {
-      .app { padding-left: 12px; padding-right: 12px; }
-      .lesson-inner { grid-template-columns: 92px 1fr auto; gap: 10px; }
-      .subject { font-size: 1rem; }
-      .tag { min-width: 58px; padding: 8px 10px; }
-      .hero-top { flex-direction: column; }
-      .day-chip { align-self: flex-start; }
+      .app { padding-left:12px; padding-right:12px; }
+      .lesson-inner { grid-template-columns:92px 1fr auto; gap:10px; }
+      .subject { font-size:1rem; }
+      .tag { min-width:58px; padding:8px 10px; }
+      .hero-top { flex-direction:column; }
+      .day-chip { align-self:flex-start; }
+      .month-grid { gap:6px; }
+      .day-btn { min-height:74px; padding:8px 6px; }
     }
   </style>
 </head>
@@ -172,7 +118,7 @@
     <section class="hero-card">
       <div class="hero-top">
         <div>
-          <div class="eyebrow">當日課表</div>
+          <div class="eyebrow">Whole Day 時間表</div>
           <p class="hero-date" id="heroDate">--</p>
           <p class="hero-sub" id="heroMeta">--</p>
         </div>
@@ -189,10 +135,9 @@
         <div class="section-head">
           <div>
             <h2>課表</h2>
-            <p>只顯示所選日期課堂</p>
+            <p>根據 Whole Day 欄位時間顯示 [file:12]</p>
           </div>
         </div>
-        <input class="date-picker" id="dateInput" type="date" />
         <div id="todayList" class="timetable"></div>
       </section>
 
@@ -200,7 +145,7 @@
         <div class="section-head">
           <div>
             <h2>Day 1-7</h2>
-            <p>一個 table 睇晒所有循環日</p>
+            <p>時間欄 sticky，並修正 Day II / Day VI 最尾 IL 顏色 [file:12]</p>
           </div>
         </div>
         <div id="daysGrid"></div>
@@ -210,16 +155,23 @@
         <div class="section-head">
           <div>
             <h2>月曆</h2>
-            <p>揀日期後按「查看課表」</p>
+            <p>本月月曆直接顯示 day cycle，點一下就開課表 [file:12]</p>
           </div>
         </div>
-        <div class="calendar-card">
-          <input class="date-picker" id="calendarInput" type="date" style="margin-bottom:0;" />
-          <div class="calendar-actions">
-            <button id="calendarGoBtn">查看課表</button>
+        <div class="calendar-shell">
+          <div class="calendar-toolbar">
+            <div>
+              <h3 id="monthTitle">--</h3>
+            </div>
+            <div class="month-nav">
+              <button id="prevMonthBtn" aria-label="上一個月">‹</button>
+              <button id="nextMonthBtn" aria-label="下一個月">›</button>
+            </div>
           </div>
+          <div class="month-grid" id="weekdayRow"></div>
+          <div class="month-grid" id="monthGrid"></div>
         </div>
-        <p class="calendar-note" id="calendarNote">請選擇日期。</p>
+        <p class="calendar-note" id="calendarNote">請在月曆揀日期。</p>
       </section>
     </main>
   </div>
@@ -233,50 +185,53 @@
   <script>
     const timetable = {
       'I': [
-        { time: '08:25–08:50', subject: 'CHI' }, { time: '08:50–09:15', subject: 'CHI' },
-        { time: '09:30–09:55', subject: 'MATH' }, { time: '09:55–10:20', subject: 'MATH' },
-        { time: '10:30–10:55', subject: 'ENG' }, { time: '10:55–11:20', subject: 'ENG' },
-        { time: '11:30–11:55', subject: 'ICT/LIB' }, { time: '11:55–12:20', subject: 'PHum' },
-        { time: '12:20–12:50', subject: 'PHum' }
+        { time: '08:25–09:00', subject: 'CHI' }, { time: '09:00–09:35', subject: 'CHI' },
+        { time: '09:50–10:25', subject: 'MATH' }, { time: '10:25–11:00', subject: 'MATH' },
+        { time: '11:10–11:45', subject: 'ENG' }, { time: '11:45–12:20', subject: 'ENG' },
+        { time: '12:01–01:55', subject: 'ICT/LIB' }, { time: '01:55–02:30', subject: 'PHum' },
+        { time: '02:30–03:00', subject: 'PHum' }
       ],
       'II': [
-        { time: '08:25–08:50', subject: 'VA' }, { time: '08:50–09:15', subject: 'VA' },
-        { time: '09:30–09:55', subject: 'CHI' }, { time: '09:55–10:20', subject: 'CHI' },
-        { time: '10:30–10:55', subject: 'RE' }, { time: '10:55–11:20', subject: 'MATH' },
-        { time: '11:30–11:55', subject: 'ENG' }, { time: '11:55–12:20', subject: 'IL' }
+        { time: '08:25–09:00', subject: 'VA' }, { time: '09:00–09:35', subject: 'VA' },
+        { time: '09:50–10:25', subject: 'CHI' }, { time: '10:25–11:00', subject: 'CHI' },
+        { time: '11:10–11:45', subject: 'RE' }, { time: '11:45–12:20', subject: 'MATH' },
+        { time: '12:01–01:55', subject: 'ENG' }, { time: '01:55–02:30', subject: 'IL' },
+        { time: '02:30–03:00', subject: 'IL' }
       ],
       'III': [
-        { time: '08:25–08:50', subject: 'PTH' }, { time: '08:50–09:15', subject: 'MUS' },
-        { time: '09:30–09:55', subject: 'ENG' }, { time: '09:55–10:20', subject: 'ENG' },
-        { time: '10:30–10:55', subject: 'CHI' }, { time: '10:55–11:20', subject: 'CHI' },
-        { time: '11:30–11:55', subject: 'MATH' }, { time: '11:55–12:20', subject: 'PE' },
-        { time: '12:20–12:50', subject: 'Tutorial' }
+        { time: '08:25–09:00', subject: 'PTH' }, { time: '09:00–09:35', subject: 'MUS' },
+        { time: '09:50–10:25', subject: 'ENG' }, { time: '10:25–11:00', subject: 'ENG' },
+        { time: '11:10–11:45', subject: 'CHI' }, { time: '11:45–12:20', subject: 'CHI' },
+        { time: '12:01–01:55', subject: 'MATH' }, { time: '01:55–02:30', subject: 'PE' },
+        { time: '02:30–03:00', subject: 'Tutorial' }
       ],
       'IV': [
-        { time: '08:25–08:50', subject: 'SCI' }, { time: '08:50–09:15', subject: 'SCI' },
-        { time: '09:30–09:55', subject: 'CHI' }, { time: '09:55–10:20', subject: 'CHI' },
-        { time: '10:30–10:55', subject: 'MATH' }, { time: '10:55–11:20', subject: 'ENG' },
-        { time: '11:30–11:55', subject: 'ICT' }, { time: '11:55–12:20', subject: 'IL' }
+        { time: '08:25–09:00', subject: 'SCI' }, { time: '09:00–09:35', subject: 'SCI' },
+        { time: '09:50–10:25', subject: 'CHI' }, { time: '10:25–11:00', subject: 'CHI' },
+        { time: '11:10–11:45', subject: 'MATH' }, { time: '11:45–12:20', subject: 'ENG' },
+        { time: '12:01–01:55', subject: 'ICT' }, { time: '01:55–02:30', subject: 'IL' },
+        { time: '02:30–03:00', subject: 'IL' }
       ],
       'V': [
-        { time: '08:25–08:50', subject: 'CHI' }, { time: '08:50–09:15', subject: 'CHI' },
-        { time: '09:30–09:55', subject: 'MATH' }, { time: '09:55–10:20', subject: 'VA' },
-        { time: '10:30–10:55', subject: 'Reading' }, { time: '10:55–11:20', subject: 'Reading' },
-        { time: '11:30–11:55', subject: 'RE' }, { time: '11:55–12:20', subject: 'MUS' },
-        { time: '12:20–12:50', subject: 'Tutorial' }
+        { time: '08:25–09:00', subject: 'CHI' }, { time: '09:00–09:35', subject: 'CHI' },
+        { time: '09:50–10:25', subject: 'MATH' }, { time: '10:25–11:00', subject: 'VA' },
+        { time: '11:10–11:45', subject: 'Reading' }, { time: '11:45–12:20', subject: 'Reading' },
+        { time: '12:01–01:55', subject: 'RE' }, { time: '01:55–02:30', subject: 'MUS' },
+        { time: '02:30–03:00', subject: 'Tutorial' }
       ],
       'VI': [
-        { time: '08:25–08:50', subject: 'PHum' }, { time: '08:50–09:15', subject: 'PHum' },
-        { time: '09:30–09:55', subject: 'MATH' }, { time: '09:55–10:20', subject: 'ENG' },
-        { time: '10:30–10:55', subject: 'PE' }, { time: '10:55–11:20', subject: 'PE' },
-        { time: '11:30–11:55', subject: 'CHI' }, { time: '11:55–12:20', subject: 'IL' }
+        { time: '08:25–09:00', subject: 'PHum' }, { time: '09:00–09:35', subject: 'PHum' },
+        { time: '09:50–10:25', subject: 'MATH' }, { time: '10:25–11:00', subject: 'ENG' },
+        { time: '11:10–11:45', subject: 'PE' }, { time: '11:45–12:20', subject: 'PE' },
+        { time: '12:01–01:55', subject: 'CHI' }, { time: '01:55–02:30', subject: 'IL' },
+        { time: '02:30–03:00', subject: 'IL' }
       ],
       'VII': [
-        { time: '08:25–08:50', subject: 'SCI' }, { time: '08:50–09:15', subject: 'SCI' },
-        { time: '09:30–09:55', subject: 'MUS' }, { time: '09:55–10:20', subject: 'MATH' },
-        { time: '10:30–10:55', subject: 'ENG' }, { time: '10:55–11:20', subject: 'ENG' },
-        { time: '11:30–11:55', subject: 'CHI' }, { time: '11:55–12:20', subject: 'CHI' },
-        { time: '12:20–12:50', subject: 'Tutorial' }
+        { time: '08:25–09:00', subject: 'SCI' }, { time: '09:00–09:35', subject: 'SCI' },
+        { time: '09:50–10:25', subject: 'MUS' }, { time: '10:25–11:00', subject: 'MATH' },
+        { time: '11:10–11:45', subject: 'ENG' }, { time: '11:45–12:20', subject: 'ENG' },
+        { time: '12:01–01:55', subject: 'CHI' }, { time: '01:55–02:30', subject: 'CHI' },
+        { time: '02:30–03:00', subject: 'Tutorial' }
       ]
     };
 
@@ -290,10 +245,10 @@
       PHum: '#d8d0c7', RE: '#d7e8c9', VA: '#ffd7c7', IL: '#e3e3e3', Reading: '#d5ead8', Tutorial: '#e8d9c6'
     };
 
+    const order = ['I','II','III','IV','V','VI','VII'];
+    const weekdays = ['日','一','二','三','四','五','六'];
     const $ = s => document.querySelector(s);
     const $$ = s => [...document.querySelectorAll(s)];
-    const dateInput = $('#dateInput');
-    const calendarInput = $('#calendarInput');
     const todayList = $('#todayList');
     const heroDate = $('#heroDate');
     const heroMeta = $('#heroMeta');
@@ -302,17 +257,22 @@
     const daysGrid = $('#daysGrid');
     const themeToggle = $('#themeToggle');
     const calendarNote = $('#calendarNote');
-    const calendarGoBtn = $('#calendarGoBtn');
+    const monthTitle = $('#monthTitle');
+    const monthGrid = $('#monthGrid');
+    const weekdayRow = $('#weekdayRow');
 
     let currentTheme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    let selectedDate = null;
+    let currentMonthDate = null;
     document.documentElement.setAttribute('data-theme', currentTheme);
     syncThemeIcon();
+
+    weekdayRow.innerHTML = weekdays.map(d => `<div class="weekday">${d}</div>`).join('');
 
     function syncThemeIcon() {
       themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
       themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? '切換淺色模式' : '切換深色模式');
     }
-
     themeToggle.addEventListener('click', () => {
       currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', currentTheme);
@@ -323,41 +283,33 @@
       const d = new Date(v + 'T00:00:00');
       return d.toLocaleDateString('zh-HK', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
     }
-
-    function colorFor(subject) {
-      return subjectColors[subject] || getComputedStyle(document.documentElement).getPropertyValue('--subject-default');
-    }
-
-    function renderLessons(dateStr) {
+    function colorFor(subject) { return subjectColors[subject] || getComputedStyle(document.documentElement).getPropertyValue('--subject-default'); }
+    function setDate(dateStr) {
+      selectedDate = dateStr;
       const day = dayCycle[dateStr];
       const lessons = day ? timetable[day] || [] : [];
       heroDate.textContent = formatDateLabel(dateStr);
-      heroMeta.textContent = day ? '依照 Day Cycle 自動顯示' : '這天沒有上課資料';
+      heroMeta.textContent = day ? '依照 Day Cycle 顯示 Whole Day 課堂' : '這天沒有上課資料';
       dayChip.textContent = day ? `Day ${day}` : 'No School';
-      subtitle.textContent = day ? `今日課表 · Day ${day}` : '今日課表';
+      subtitle.textContent = day ? `課表 · Day ${day}` : '課表';
       calendarNote.textContent = day ? `${formatDateLabel(dateStr)} · Day ${day}` : `${formatDateLabel(dateStr)} · 沒有上課資料`;
-
       if (!day || !lessons.length) {
         todayList.innerHTML = '<div class="empty">這天沒有 timetable 資料。</div>';
-        return;
-      }
-
-      todayList.innerHTML = lessons.map(item => {
-        const bg = colorFor(item.subject).trim() || '#ece7de';
-        return `
-          <article class="lesson" style="background:${bg}">
+      } else {
+        todayList.innerHTML = lessons.map(item => `
+          <article class="lesson" style="background:${colorFor(item.subject).trim() || '#ece7de'}">
             <div class="lesson-inner">
               <div class="time">${item.time}</div>
               <div class="subject">${item.subject}</div>
               <div class="tag">${item.subject}</div>
             </div>
           </article>
-        `;
-      }).join('');
+        `).join('');
+      }
+      renderCalendar();
     }
 
-    function renderDayCards() {
-      const order = ['I','II','III','IV','V','VI','VII'];
+    function renderDayTable() {
       const maxRows = Math.max(...order.map(day => (timetable[day] || []).length));
       const rows = [];
       for (let i = 0; i < maxRows; i++) {
@@ -365,36 +317,18 @@
         const cells = order.map(day => {
           const item = timetable[day]?.[i];
           if (!item) return '<td></td>';
-          const bg = colorFor(item.subject).trim() || '#ece7de';
-          return `<td class="subject-cell" style="background:${bg}">${item.subject}</td>`;
+          return `<td class="subject-cell" style="background:${colorFor(item.subject).trim() || '#ece7de'}">${item.subject}</td>`;
         }).join('');
         rows.push(`<tr><td class="time-col">${sampleTime}</td>${cells}</tr>`);
       }
       daysGrid.innerHTML = `
         <div class="days-table-wrap">
           <table class="days-table">
-            <thead>
-              <tr>
-                <th class="time-col">時間</th>
-                ${order.map(day => `<th>Day ${day}</th>`).join('')}
-              </tr>
-            </thead>
+            <thead><tr><th class="time-col">時間</th>${order.map(day => `<th>Day ${day}</th>`).join('')}</tr></thead>
             <tbody>${rows.join('')}</tbody>
           </table>
         </div>
       `;
-    }
-
-    function nextSchoolDay(fromDate) {
-      const dates = Object.keys(dayCycle).sort();
-      return dates.find(d => d > fromDate) || fromDate;
-    }
-
-    function setDate(dateStr) {
-      if (!dateStr) return;
-      dateInput.value = dateStr;
-      calendarInput.value = dateStr;
-      renderLessons(dateStr);
     }
 
     function showPanel(name) {
@@ -402,31 +336,67 @@
       $$('.nav button').forEach(btn => btn.classList.toggle('active', btn.dataset.panel === name));
     }
 
-    function goFromCalendar() {
-      const picked = calendarInput.value;
-      if (!picked) return;
-      setDate(picked);
-      showPanel('timetable');
+    function nextSchoolDay(fromDate) {
+      const dates = Object.keys(dayCycle).sort();
+      return dates.find(d => d > fromDate) || fromDate;
     }
+
+    function renderCalendar() {
+      const base = currentMonthDate || new Date((selectedDate || Object.keys(dayCycle)[0]) + 'T00:00:00');
+      const year = base.getFullYear();
+      const month = base.getMonth();
+      monthTitle.textContent = `${year}年${month + 1}月`;
+      const first = new Date(year, month, 1);
+      const firstDay = first.getDay();
+      const start = new Date(year, month, 1 - firstDay);
+      const cells = [];
+      for (let i = 0; i < 42; i++) {
+        const d = new Date(start);
+        d.setDate(start.getDate() + i);
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const key = `${y}-${m}-${dd}`;
+        const cycle = dayCycle[key];
+        const inMonth = d.getMonth() === month;
+        const active = key === selectedDate ? 'active' : '';
+        const school = cycle ? 'school' : '';
+        const muted = inMonth ? '' : 'muted';
+        cells.push(`
+          <button class="day-btn ${active} ${school} ${muted}" data-date="${key}">
+            <span class="day-num">${d.getDate()}</span>
+            ${cycle ? `<span class="cycle-badge">Day ${cycle}</span>` : '<span></span>'}
+          </button>
+        `);
+      }
+      monthGrid.innerHTML = cells.join('');
+      $$('#monthGrid .day-btn').forEach(btn => btn.addEventListener('click', () => {
+        const date = btn.dataset.date;
+        setDate(date);
+        showPanel('timetable');
+      }));
+    }
+
+    $('#prevMonthBtn').addEventListener('click', () => {
+      const base = currentMonthDate || new Date((selectedDate || Object.keys(dayCycle)[0]) + 'T00:00:00');
+      currentMonthDate = new Date(base.getFullYear(), base.getMonth() - 1, 1);
+      renderCalendar();
+    });
+    $('#nextMonthBtn').addEventListener('click', () => {
+      const base = currentMonthDate || new Date((selectedDate || Object.keys(dayCycle)[0]) + 'T00:00:00');
+      currentMonthDate = new Date(base.getFullYear(), base.getMonth() + 1, 1);
+      renderCalendar();
+    });
+    $('#todayBtn').addEventListener('click', () => setDate(fallbackDate));
+    $('#nextSchoolDayBtn').addEventListener('click', () => setDate(nextSchoolDay(selectedDate || fallbackDate)));
+    $$('.nav button').forEach(btn => btn.addEventListener('click', () => showPanel(btn.dataset.panel)));
 
     const today = new Date();
     const todayStr = today.toISOString().slice(0, 10);
     const fallbackDate = dayCycle[todayStr] ? todayStr : Object.keys(dayCycle).find(d => d >= todayStr) || Object.keys(dayCycle)[0];
-
-    renderDayCards();
+    currentMonthDate = new Date(fallbackDate + 'T00:00:00');
+    renderDayTable();
     setDate(fallbackDate);
-
-    dateInput.addEventListener('change', e => setDate(e.target.value));
-    calendarInput.addEventListener('change', e => {
-      const picked = e.target.value;
-      if (!picked) return;
-      const day = dayCycle[picked];
-      calendarNote.textContent = day ? `${formatDateLabel(picked)} · Day ${day}` : `${formatDateLabel(picked)} · 沒有上課資料`;
-    });
-    calendarGoBtn.addEventListener('click', goFromCalendar);
-    $('#todayBtn').addEventListener('click', () => setDate(fallbackDate));
-    $('#nextSchoolDayBtn').addEventListener('click', () => setDate(nextSchoolDay(dateInput.value || fallbackDate)));
-    $$('.nav button').forEach(btn => btn.addEventListener('click', () => showPanel(btn.dataset.panel)));
   </script>
 </body>
 </html>
