@@ -6,7 +6,7 @@
     {"start":"10:25","end":"11:00","subject":"MATH"},
     {"start":"11:10","end":"11:45","subject":"ENG"},
     {"start":"11:45","end":"12:20","subject":"ENG"},
-    {"start":"1:20","end":"1:55","subject":"ICT / LIB"},
+    {"start":"1:20","end":"1:55","subject":"ICT/LIB"},
     {"start":"1:55","end":"2:30","subject":"PHum"},
     {"start":"2:30","end":"3:00","subject":"PHum"}
   ],
