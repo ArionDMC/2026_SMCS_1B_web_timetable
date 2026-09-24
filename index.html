@@ -259,7 +259,7 @@ function labelFor(subject) {
     weekdayRow.innerHTML = weekdays.map(d => `<div class="weekday">${d}</div>`).join('');
 
     function syncThemeIcon() {
-      themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+      themeToggle.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
       themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? '切換淺色模式' : '切換深色模式');
     }
     themeToggle.addEventListener('click', () => {
@@ -271,7 +271,7 @@ function labelFor(subject) {
     const langToggle = $('#langToggle');
     langToggle.addEventListener('click', () => {
       currentLang = currentLang === 'en' ? 'zh' : 'en';
-      langToggle.textContent = currentLang === 'en' ? '中/EN' : 'EN/中';
+      langToggle.textContent = currentLang === 'en' ? 'EN' : '中';
       if (selectedDate) setDate(selectedDate);
       renderDayTable();
     });
