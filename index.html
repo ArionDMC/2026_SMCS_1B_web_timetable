@@ -188,6 +188,7 @@
     const DATA_URLS = { timetable: './timetable.json', dayCycle: './day-cycle.json' };
     let timetable = {};
     let dayCycle = {};
+    let todayFallbackDate = null;
 
     const subjectColors = {
       CHI: '#efd4bf', ENG: '#c8d8ff', MATH: '#f5db93', SCI: '#d2e7cf', ICT: '#cce6ea',
@@ -245,8 +246,10 @@
     }
 
     function nextPeDate(fromDate) {
-      return Object.keys(dayCycle).sort().find(date =>
-        date >= fromDate && ['III', 'VI'].includes(dayCycle[date])
+      const dates = Object.keys(dayCycle).sort();
+      const todayIsPe = ['III', 'VI'].includes(dayCycle[fromDate]);
+      return dates.find(date =>
+        (todayIsPe ? date > fromDate : date >= fromDate) && ['III', 'VI'].includes(dayCycle[date])
       ) || null;
     }
     function setDate(dateStr) {
@@ -355,8 +358,8 @@
       currentMonthDate = new Date(base.getFullYear(), base.getMonth() + 1, 1);
       renderCalendar();
     });
-    $('#todayBtn').addEventListener('click', () => setDate(fallbackDate));
-    $('#nextSchoolDayBtn').addEventListener('click', () => setDate(nextSchoolDay(selectedDate || fallbackDate)));
+    $('#todayBtn').addEventListener('click', () => setDate(todayFallbackDate || selectedDate));
+    $('#nextSchoolDayBtn').addEventListener('click', () => setDate(nextSchoolDay(selectedDate || todayFallbackDate)));
     $$('.nav button').forEach(btn => btn.addEventListener('click', () => showPanel(btn.dataset.panel)));
 
     async function startApp() {
@@ -375,6 +378,7 @@
       const todayStr = today.toISOString().slice(0, 10);
       const availableDates = Object.keys(dayCycle).sort();
       const fallbackDate = dayCycle[todayStr] ? todayStr : availableDates.find(d => d >= todayStr) || availableDates[0];
+      todayFallbackDate = fallbackDate;
       currentMonthDate = fallbackDate ? new Date(fallbackDate + 'T00:00:00') : new Date();
       renderDayTable();
       if (fallbackDate) {
