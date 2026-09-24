@@ -1,344 +1,632 @@
 [
   {
-    "dayCycle": "I",
-    "timeWholeDay": "8:25-9:00",
-    "timeHalfDay": "8:25-8:50",
+    "day": "I",
+    "half_day_time": "7:30–8:05",
+    "whole_day_time": "7:30–8:05",
+    "subject": "Reading Session"
+  },
+  {
+    "day": "II",
+    "half_day_time": "7:30–8:05",
+    "whole_day_time": "7:30–8:05",
+    "subject": "Reading Session"
+  },
+  {
+    "day": "III",
+    "half_day_time": "7:30–8:05",
+    "whole_day_time": "7:30–8:05",
+    "subject": "Reading Session"
+  },
+  {
+    "day": "IV",
+    "half_day_time": "7:30–8:05",
+    "whole_day_time": "7:30–8:05",
+    "subject": "Reading Session"
+  },
+  {
+    "day": "V",
+    "half_day_time": "7:30–8:05",
+    "whole_day_time": "7:30–8:05",
+    "subject": "Reading Session"
+  },
+  {
+    "day": "VI",
+    "half_day_time": "7:30–8:05",
+    "whole_day_time": "7:30–8:05",
+    "subject": "Reading Session"
+  },
+  {
+    "day": "VII",
+    "half_day_time": "7:30–8:05",
+    "whole_day_time": "7:30–8:05",
+    "subject": "Reading Session"
+  },
+  {
+    "day": "I",
+    "half_day_time": "8:05–8:25",
+    "whole_day_time": "8:05–8:25",
+    "subject": "Assembly"
+  },
+  {
+    "day": "II",
+    "half_day_time": "8:05–8:25",
+    "whole_day_time": "8:05–8:25",
+    "subject": "Assembly"
+  },
+  {
+    "day": "III",
+    "half_day_time": "8:05–8:25",
+    "whole_day_time": "8:05–8:25",
+    "subject": "Assembly"
+  },
+  {
+    "day": "IV",
+    "half_day_time": "8:05–8:25",
+    "whole_day_time": "8:05–8:25",
+    "subject": "Assembly"
+  },
+  {
+    "day": "V",
+    "half_day_time": "8:05–8:25",
+    "whole_day_time": "8:05–8:25",
+    "subject": "Assembly"
+  },
+  {
+    "day": "VI",
+    "half_day_time": "8:05–8:25",
+    "whole_day_time": "8:05–8:25",
+    "subject": "Assembly"
+  },
+  {
+    "day": "VII",
+    "half_day_time": "8:05–8:25",
+    "whole_day_time": "8:05–8:25",
+    "subject": "Assembly"
+  },
+  {
+    "day": "I",
+    "half_day_time": "8:25–8:50",
+    "whole_day_time": "8:25–9:00",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "II",
-    "timeWholeDay": "8:25-9:00",
-    "timeHalfDay": "8:25-8:50",
+    "day": "II",
+    "half_day_time": "8:25–8:50",
+    "whole_day_time": "8:25–9:00",
     "subject": "1B VA"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "8:25-9:00",
-    "timeHalfDay": "8:25-8:50",
+    "day": "III",
+    "half_day_time": "8:25–8:50",
+    "whole_day_time": "8:25–9:00",
     "subject": "1B PTH"
   },
   {
-    "dayCycle": "IV",
-    "timeWholeDay": "8:25-9:00",
-    "timeHalfDay": "8:25-8:50",
+    "day": "IV",
+    "half_day_time": "8:25–8:50",
+    "whole_day_time": "8:25–9:00",
     "subject": "1B SCI"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "8:25-9:00",
-    "timeHalfDay": "8:25-8:50",
+    "day": "V",
+    "half_day_time": "8:25–8:50",
+    "whole_day_time": "8:25–9:00",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "VI",
-    "timeWholeDay": "8:25-9:00",
-    "timeHalfDay": "8:25-8:50",
+    "day": "VI",
+    "half_day_time": "8:25–8:50",
+    "whole_day_time": "8:25–9:00",
     "subject": "1B PHum"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "8:25-9:00",
-    "timeHalfDay": "8:25-8:50",
+    "day": "VII",
+    "half_day_time": "8:25–8:50",
+    "whole_day_time": "8:25–9:00",
     "subject": "1B SCI"
   },
   {
-    "dayCycle": "I",
-    "timeWholeDay": "9:00-9:35",
-    "timeHalfDay": "8:50-9:15",
+    "day": "I",
+    "half_day_time": "8:50–9:15",
+    "whole_day_time": "9:00–9:35",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "II",
-    "timeWholeDay": "9:00-9:35",
-    "timeHalfDay": "8:50-9:15",
+    "day": "II",
+    "half_day_time": "8:50–9:15",
+    "whole_day_time": "9:00–9:35",
     "subject": "1B VA"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "9:00-9:35",
-    "timeHalfDay": "8:50-9:15",
+    "day": "III",
+    "half_day_time": "8:50–9:15",
+    "whole_day_time": "9:00–9:35",
     "subject": "1B MUS"
   },
   {
-    "dayCycle": "IV",
-    "timeWholeDay": "9:00-9:35",
-    "timeHalfDay": "8:50-9:15",
+    "day": "IV",
+    "half_day_time": "8:50–9:15",
+    "whole_day_time": "9:00–9:35",
     "subject": "1B SCI"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "9:00-9:35",
-    "timeHalfDay": "8:50-9:15",
+    "day": "V",
+    "half_day_time": "8:50–9:15",
+    "whole_day_time": "9:00–9:35",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "VI",
-    "timeWholeDay": "9:00-9:35",
-    "timeHalfDay": "8:50-9:15",
+    "day": "VI",
+    "half_day_time": "8:50–9:15",
+    "whole_day_time": "9:00–9:35",
     "subject": "1B PHum"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "9:00-9:35",
-    "timeHalfDay": "8:50-9:15",
+    "day": "VII",
+    "half_day_time": "8:50–9:15",
+    "whole_day_time": "9:00–9:35",
     "subject": "1B SCI"
   },
   {
-    "dayCycle": "I",
-    "timeWholeDay": "9:50-10:25",
-    "timeHalfDay": "9:30-9:55",
+    "day": "I",
+    "half_day_time": "9:15–9:30",
+    "whole_day_time": "9:35–9:50",
+    "subject": "Recess"
+  },
+  {
+    "day": "II",
+    "half_day_time": "9:15–9:30",
+    "whole_day_time": "9:35–9:50",
+    "subject": "Recess"
+  },
+  {
+    "day": "III",
+    "half_day_time": "9:15–9:30",
+    "whole_day_time": "9:35–9:50",
+    "subject": "Recess"
+  },
+  {
+    "day": "IV",
+    "half_day_time": "9:15–9:30",
+    "whole_day_time": "9:35–9:50",
+    "subject": "Recess"
+  },
+  {
+    "day": "V",
+    "half_day_time": "9:15–9:30",
+    "whole_day_time": "9:35–9:50",
+    "subject": "Recess"
+  },
+  {
+    "day": "VI",
+    "half_day_time": "9:15–9:30",
+    "whole_day_time": "9:35–9:50",
+    "subject": "Recess"
+  },
+  {
+    "day": "VII",
+    "half_day_time": "9:15–9:30",
+    "whole_day_time": "9:35–9:50",
+    "subject": "Recess"
+  },
+  {
+    "day": "I",
+    "half_day_time": "9:30–9:55",
+    "whole_day_time": "9:50–10:25",
     "subject": "1B MATH"
   },
   {
-    "dayCycle": "II",
-    "timeWholeDay": "9:50-10:25",
-    "timeHalfDay": "9:30-9:55",
+    "day": "II",
+    "half_day_time": "9:30–9:55",
+    "whole_day_time": "9:50–10:25",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "9:50-10:25",
-    "timeHalfDay": "9:30-9:55",
+    "day": "III",
+    "half_day_time": "9:30–9:55",
+    "whole_day_time": "9:50–10:25",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "IV",
-    "timeWholeDay": "9:50-10:25",
-    "timeHalfDay": "9:30-9:55",
+    "day": "IV",
+    "half_day_time": "9:30–9:55",
+    "whole_day_time": "9:50–10:25",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "9:50-10:25",
-    "timeHalfDay": "9:30-9:55",
+    "day": "V",
+    "half_day_time": "9:30–9:55",
+    "whole_day_time": "9:50–10:25",
     "subject": "1B MATH"
   },
   {
-    "dayCycle": "VI",
-    "timeWholeDay": "9:50-10:25",
-    "timeHalfDay": "9:30-9:55",
+    "day": "VI",
+    "half_day_time": "9:30–9:55",
+    "whole_day_time": "9:50–10:25",
     "subject": "1B MATH"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "9:50-10:25",
-    "timeHalfDay": "9:30-9:55",
+    "day": "VII",
+    "half_day_time": "9:30–9:55",
+    "whole_day_time": "9:50–10:25",
     "subject": "1B MUS"
   },
   {
-    "dayCycle": "I",
-    "timeWholeDay": "10:25-11:00",
-    "timeHalfDay": "9:55-10:20",
+    "day": "I",
+    "half_day_time": "9:55–10:20",
+    "whole_day_time": "10:25–11:00",
     "subject": "1B MATH"
   },
   {
-    "dayCycle": "II",
-    "timeWholeDay": "10:25-11:00",
-    "timeHalfDay": "9:55-10:20",
+    "day": "II",
+    "half_day_time": "9:55–10:20",
+    "whole_day_time": "10:25–11:00",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "10:25-11:00",
-    "timeHalfDay": "9:55-10:20",
+    "day": "III",
+    "half_day_time": "9:55–10:20",
+    "whole_day_time": "10:25–11:00",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "IV",
-    "timeWholeDay": "10:25-11:00",
-    "timeHalfDay": "9:55-10:20",
+    "day": "IV",
+    "half_day_time": "9:55–10:20",
+    "whole_day_time": "10:25–11:00",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "10:25-11:00",
-    "timeHalfDay": "9:55-10:20",
+    "day": "V",
+    "half_day_time": "9:55–10:20",
+    "whole_day_time": "10:25–11:00",
     "subject": "1B VA"
   },
   {
-    "dayCycle": "VI",
-    "timeWholeDay": "10:25-11:00",
-    "timeHalfDay": "9:55-10:20",
+    "day": "VI",
+    "half_day_time": "9:55–10:20",
+    "whole_day_time": "10:25–11:00",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "10:25-11:00",
-    "timeHalfDay": "9:55-10:20",
+    "day": "VII",
+    "half_day_time": "9:55–10:20",
+    "whole_day_time": "10:25–11:00",
     "subject": "1B MATH"
   },
   {
-    "dayCycle": "I",
-    "timeWholeDay": "11:10-11:45",
-    "timeHalfDay": "10:30-10:55",
+    "day": "I",
+    "half_day_time": "10:20–10:30",
+    "whole_day_time": "11:00–11:10",
+    "subject": "Break"
+  },
+  {
+    "day": "II",
+    "half_day_time": "10:20–10:30",
+    "whole_day_time": "11:00–11:10",
+    "subject": "Break"
+  },
+  {
+    "day": "III",
+    "half_day_time": "10:20–10:30",
+    "whole_day_time": "11:00–11:10",
+    "subject": "Break"
+  },
+  {
+    "day": "IV",
+    "half_day_time": "10:20–10:30",
+    "whole_day_time": "11:00–11:10",
+    "subject": "Break"
+  },
+  {
+    "day": "V",
+    "half_day_time": "10:20–10:30",
+    "whole_day_time": "11:00–11:10",
+    "subject": "Break"
+  },
+  {
+    "day": "VI",
+    "half_day_time": "10:20–10:30",
+    "whole_day_time": "11:00–11:10",
+    "subject": "Break"
+  },
+  {
+    "day": "VII",
+    "half_day_time": "10:20–10:30",
+    "whole_day_time": "11:00–11:10",
+    "subject": "Break"
+  },
+  {
+    "day": "I",
+    "half_day_time": "10:30–10:55",
+    "whole_day_time": "11:10–11:45",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "II",
-    "timeWholeDay": "11:10-11:45",
-    "timeHalfDay": "10:30-10:55",
+    "day": "II",
+    "half_day_time": "10:30–10:55",
+    "whole_day_time": "11:10–11:45",
     "subject": "1B RE"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "11:10-11:45",
-    "timeHalfDay": "10:30-10:55",
+    "day": "III",
+    "half_day_time": "10:30–10:55",
+    "whole_day_time": "11:10–11:45",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "IV",
-    "timeWholeDay": "11:10-11:45",
-    "timeHalfDay": "10:30-10:55",
+    "day": "IV",
+    "half_day_time": "10:30–10:55",
+    "whole_day_time": "11:10–11:45",
     "subject": "1B MATH"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "11:10-11:45",
-    "timeHalfDay": "10:30-10:55",
+    "day": "V",
+    "half_day_time": "10:30–10:55",
+    "whole_day_time": "11:10–11:45",
     "subject": "1B Reading"
   },
   {
-    "dayCycle": "VI",
-    "timeWholeDay": "11:10-11:45",
-    "timeHalfDay": "10:30-10:55",
+    "day": "VI",
+    "half_day_time": "10:30–10:55",
+    "whole_day_time": "11:10–11:45",
     "subject": "1B PE"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "11:10-11:45",
-    "timeHalfDay": "10:30-10:55",
+    "day": "VII",
+    "half_day_time": "10:30–10:55",
+    "whole_day_time": "11:10–11:45",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "I",
-    "timeWholeDay": "11:45-12:20",
-    "timeHalfDay": "10:55-11:20",
+    "day": "I",
+    "half_day_time": "10:55–11:20",
+    "whole_day_time": "11:45–12:20",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "II",
-    "timeWholeDay": "11:45-12:20",
-    "timeHalfDay": "10:55-11:20",
+    "day": "II",
+    "half_day_time": "10:55–11:20",
+    "whole_day_time": "11:45–12:20",
     "subject": "1B MATH"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "11:45-12:20",
-    "timeHalfDay": "10:55-11:20",
+    "day": "III",
+    "half_day_time": "10:55–11:20",
+    "whole_day_time": "11:45–12:20",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "IV",
-    "timeWholeDay": "11:45-12:20",
-    "timeHalfDay": "10:55-11:20",
+    "day": "IV",
+    "half_day_time": "10:55–11:20",
+    "whole_day_time": "11:45–12:20",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "11:45-12:20",
-    "timeHalfDay": "10:55-11:20",
+    "day": "V",
+    "half_day_time": "10:55–11:20",
+    "whole_day_time": "11:45–12:20",
     "subject": "1B Reading"
   },
   {
-    "dayCycle": "VI",
-    "timeWholeDay": "11:45-12:20",
-    "timeHalfDay": "10:55-11:20",
+    "day": "VI",
+    "half_day_time": "10:55–11:20",
+    "whole_day_time": "11:45–12:20",
     "subject": "1B PE"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "11:45-12:20",
-    "timeHalfDay": "10:55-11:20",
+    "day": "VII",
+    "half_day_time": "10:55–11:20",
+    "whole_day_time": "11:45–12:20",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "I",
-    "timeWholeDay": "1:20-1:55",
-    "timeHalfDay": "11:30-11:55",
-    "subject": "1B ICT / 1B LIB"
+    "day": "I",
+    "half_day_time": "11:20–11:30 Break",
+    "whole_day_time": "12:20–12:50",
+    "subject": "Lunch"
   },
   {
-    "dayCycle": "II",
-    "timeWholeDay": "1:20-1:55",
-    "timeHalfDay": "11:30-11:55",
+    "day": "II",
+    "half_day_time": "11:20–11:30 Break",
+    "whole_day_time": "12:20–12:50",
+    "subject": "Lunch"
+  },
+  {
+    "day": "III",
+    "half_day_time": "11:20–11:30 Break",
+    "whole_day_time": "12:20–12:50",
+    "subject": "Lunch"
+  },
+  {
+    "day": "IV",
+    "half_day_time": "11:20–11:30 Break",
+    "whole_day_time": "12:20–12:50",
+    "subject": "Lunch"
+  },
+  {
+    "day": "V",
+    "half_day_time": "11:20–11:30 Break",
+    "whole_day_time": "12:20–12:50",
+    "subject": "Lunch"
+  },
+  {
+    "day": "VI",
+    "half_day_time": "11:20–11:30 Break",
+    "whole_day_time": "12:20–12:50",
+    "subject": "Lunch"
+  },
+  {
+    "day": "VII",
+    "half_day_time": "11:20–11:30 Break",
+    "whole_day_time": "12:20–12:50",
+    "subject": "Lunch"
+  },
+  {
+    "day": "I",
+    "half_day_time": "",
+    "whole_day_time": "12:50–1:20",
+    "subject": "Lunch Break"
+  },
+  {
+    "day": "II",
+    "half_day_time": "",
+    "whole_day_time": "12:50–1:20",
+    "subject": "Lunch Break"
+  },
+  {
+    "day": "III",
+    "half_day_time": "",
+    "whole_day_time": "12:50–1:20",
+    "subject": "Lunch Break"
+  },
+  {
+    "day": "IV",
+    "half_day_time": "",
+    "whole_day_time": "12:50–1:20",
+    "subject": "Lunch Break"
+  },
+  {
+    "day": "V",
+    "half_day_time": "",
+    "whole_day_time": "12:50–1:20",
+    "subject": "Lunch Break"
+  },
+  {
+    "day": "VI",
+    "half_day_time": "",
+    "whole_day_time": "12:50–1:20",
+    "subject": "Lunch Break"
+  },
+  {
+    "day": "VII",
+    "half_day_time": "",
+    "whole_day_time": "12:50–1:20",
+    "subject": "Lunch Break"
+  },
+  {
+    "day": "I",
+    "half_day_time": "11:30–11:55",
+    "whole_day_time": "1:20–1:55",
+    "subject": "1B ICT (1B LIB)"
+  },
+  {
+    "day": "II",
+    "half_day_time": "11:30–11:55",
+    "whole_day_time": "1:20–1:55",
     "subject": "1B ENG"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "1:20-1:55",
-    "timeHalfDay": "11:30-11:55",
+    "day": "III",
+    "half_day_time": "11:30–11:55",
+    "whole_day_time": "1:20–1:55",
     "subject": "1B MATH"
   },
   {
-    "dayCycle": "IV",
-    "timeWholeDay": "1:20-1:55",
-    "timeHalfDay": "11:30-11:55",
+    "day": "IV",
+    "half_day_time": "11:30–11:55",
+    "whole_day_time": "1:20–1:55",
     "subject": "1B ICT"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "1:20-1:55",
-    "timeHalfDay": "11:30-11:55",
+    "day": "V",
+    "half_day_time": "11:30–11:55",
+    "whole_day_time": "1:20–1:55",
     "subject": "1B RE"
   },
   {
-    "dayCycle": "VI",
-    "timeWholeDay": "1:20-1:55",
-    "timeHalfDay": "11:30-11:55",
+    "day": "VI",
+    "half_day_time": "11:30–11:55",
+    "whole_day_time": "1:20–1:55",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "1:20-1:55",
-    "timeHalfDay": "11:30-11:55",
+    "day": "VII",
+    "half_day_time": "11:30–11:55",
+    "whole_day_time": "1:20–1:55",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "I",
-    "timeWholeDay": "1:55-2:30",
-    "timeHalfDay": "11:55-12:20",
+    "day": "I",
+    "half_day_time": "11:55–12:20",
+    "whole_day_time": "1:55–2:30",
     "subject": "1B PHum"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "1:55-2:30",
-    "timeHalfDay": "11:55-12:20",
+    "day": "II",
+    "half_day_time": "11:55–12:20",
+    "whole_day_time": "1:55–2:30",
+    "subject": "IL"
+  },
+  {
+    "day": "III",
+    "half_day_time": "11:55–12:20",
+    "whole_day_time": "1:55–2:30",
     "subject": "1B PE"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "1:55-2:30",
-    "timeHalfDay": "11:55-12:20",
+    "day": "IV",
+    "half_day_time": "11:55–12:20",
+    "whole_day_time": "1:55–2:30",
+    "subject": "IL"
+  },
+  {
+    "day": "V",
+    "half_day_time": "11:55–12:20",
+    "whole_day_time": "1:55–2:30",
     "subject": "1B MUS"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "1:55-2:30",
-    "timeHalfDay": "11:55-12:20",
+    "day": "VI",
+    "half_day_time": "11:55–12:20",
+    "whole_day_time": "1:55–2:30",
+    "subject": "IL"
+  },
+  {
+    "day": "VII",
+    "half_day_time": "11:55–12:20",
+    "whole_day_time": "1:55–2:30",
     "subject": "1B CHI"
   },
   {
-    "dayCycle": "I",
-    "timeWholeDay": "2:30-3:00",
-    "timeHalfDay": "12:20-12:50",
+    "day": "I",
+    "half_day_time": "12:20–12:50",
+    "whole_day_time": "2:30–3:00",
     "subject": "1B PHum"
   },
   {
-    "dayCycle": "III",
-    "timeWholeDay": "2:30-3:00",
-    "timeHalfDay": "12:20-12:50",
+    "day": "II",
+    "half_day_time": "12:20–12:50",
+    "whole_day_time": "2:30–3:00",
+    "subject": "IL"
+  },
+  {
+    "day": "III",
+    "half_day_time": "12:20–12:50",
+    "whole_day_time": "2:30–3:00",
     "subject": "Tutorial"
   },
   {
-    "dayCycle": "V",
-    "timeWholeDay": "2:30-3:00",
-    "timeHalfDay": "12:20-12:50",
+    "day": "IV",
+    "half_day_time": "12:20–12:50",
+    "whole_day_time": "2:30–3:00",
+    "subject": "IL"
+  },
+  {
+    "day": "V",
+    "half_day_time": "12:20–12:50",
+    "whole_day_time": "2:30–3:00",
     "subject": "Tutorial"
   },
   {
-    "dayCycle": "VII",
-    "timeWholeDay": "2:30-3:00",
-    "timeHalfDay": "12:20-12:50",
+    "day": "VI",
+    "half_day_time": "12:20–12:50",
+    "whole_day_time": "2:30–3:00",
+    "subject": "IL"
+  },
+  {
+    "day": "VII",
+    "half_day_time": "12:20–12:50",
+    "whole_day_time": "2:30–3:00",
     "subject": "Tutorial"
   }
 ]
