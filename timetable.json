@@ -1,0 +1,44 @@
+[
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "II",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B VA"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B PTH"
+  },
+  {
+    "dayCycle": "IV",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B SCI"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "VI",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B PHum"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B SCI"
+  }
+]
