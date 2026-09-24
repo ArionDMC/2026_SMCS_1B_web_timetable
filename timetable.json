@@ -1,2 +1,344 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Error><Code>AccessDenied</Code><Message>Request has expired</Message><X-Amz-Expires>1403</X-Amz-Expires><Expires>2026-09-24T08:32:23Z</Expires><ServerTime>2026-09-24T08:54:34Z</ServerTime><RequestId>V9FT264C4PMTCRJ5</RequestId><HostId>bSSncyM/w/B7L128aN/WeVUPSemInJx26GBy3O8lWb9z8uH8HIqWlnD6HhGwPuLqkNZRHKKzoMHw9sS59o/wf4+ZSLGP5wSJ</HostId></Error>
+[
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "II",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B VA"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B PTH"
+  },
+  {
+    "dayCycle": "IV",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B SCI"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "VI",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B PHum"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "8:25-9:00",
+    "timeHalfDay": "8:25-8:50",
+    "subject": "1B SCI"
+  },
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "9:00-9:35",
+    "timeHalfDay": "8:50-9:15",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "II",
+    "timeWholeDay": "9:00-9:35",
+    "timeHalfDay": "8:50-9:15",
+    "subject": "1B VA"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "9:00-9:35",
+    "timeHalfDay": "8:50-9:15",
+    "subject": "1B MUS"
+  },
+  {
+    "dayCycle": "IV",
+    "timeWholeDay": "9:00-9:35",
+    "timeHalfDay": "8:50-9:15",
+    "subject": "1B SCI"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "9:00-9:35",
+    "timeHalfDay": "8:50-9:15",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "VI",
+    "timeWholeDay": "9:00-9:35",
+    "timeHalfDay": "8:50-9:15",
+    "subject": "1B PHum"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "9:00-9:35",
+    "timeHalfDay": "8:50-9:15",
+    "subject": "1B SCI"
+  },
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "9:50-10:25",
+    "timeHalfDay": "9:30-9:55",
+    "subject": "1B MATH"
+  },
+  {
+    "dayCycle": "II",
+    "timeWholeDay": "9:50-10:25",
+    "timeHalfDay": "9:30-9:55",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "9:50-10:25",
+    "timeHalfDay": "9:30-9:55",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "IV",
+    "timeWholeDay": "9:50-10:25",
+    "timeHalfDay": "9:30-9:55",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "9:50-10:25",
+    "timeHalfDay": "9:30-9:55",
+    "subject": "1B MATH"
+  },
+  {
+    "dayCycle": "VI",
+    "timeWholeDay": "9:50-10:25",
+    "timeHalfDay": "9:30-9:55",
+    "subject": "1B MATH"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "9:50-10:25",
+    "timeHalfDay": "9:30-9:55",
+    "subject": "1B MUS"
+  },
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "10:25-11:00",
+    "timeHalfDay": "9:55-10:20",
+    "subject": "1B MATH"
+  },
+  {
+    "dayCycle": "II",
+    "timeWholeDay": "10:25-11:00",
+    "timeHalfDay": "9:55-10:20",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "10:25-11:00",
+    "timeHalfDay": "9:55-10:20",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "IV",
+    "timeWholeDay": "10:25-11:00",
+    "timeHalfDay": "9:55-10:20",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "10:25-11:00",
+    "timeHalfDay": "9:55-10:20",
+    "subject": "1B VA"
+  },
+  {
+    "dayCycle": "VI",
+    "timeWholeDay": "10:25-11:00",
+    "timeHalfDay": "9:55-10:20",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "10:25-11:00",
+    "timeHalfDay": "9:55-10:20",
+    "subject": "1B MATH"
+  },
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "11:10-11:45",
+    "timeHalfDay": "10:30-10:55",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "II",
+    "timeWholeDay": "11:10-11:45",
+    "timeHalfDay": "10:30-10:55",
+    "subject": "1B RE"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "11:10-11:45",
+    "timeHalfDay": "10:30-10:55",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "IV",
+    "timeWholeDay": "11:10-11:45",
+    "timeHalfDay": "10:30-10:55",
+    "subject": "1B MATH"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "11:10-11:45",
+    "timeHalfDay": "10:30-10:55",
+    "subject": "1B Reading"
+  },
+  {
+    "dayCycle": "VI",
+    "timeWholeDay": "11:10-11:45",
+    "timeHalfDay": "10:30-10:55",
+    "subject": "1B PE"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "11:10-11:45",
+    "timeHalfDay": "10:30-10:55",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "11:45-12:20",
+    "timeHalfDay": "10:55-11:20",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "II",
+    "timeWholeDay": "11:45-12:20",
+    "timeHalfDay": "10:55-11:20",
+    "subject": "1B MATH"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "11:45-12:20",
+    "timeHalfDay": "10:55-11:20",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "IV",
+    "timeWholeDay": "11:45-12:20",
+    "timeHalfDay": "10:55-11:20",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "11:45-12:20",
+    "timeHalfDay": "10:55-11:20",
+    "subject": "1B Reading"
+  },
+  {
+    "dayCycle": "VI",
+    "timeWholeDay": "11:45-12:20",
+    "timeHalfDay": "10:55-11:20",
+    "subject": "1B PE"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "11:45-12:20",
+    "timeHalfDay": "10:55-11:20",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "1:20-1:55",
+    "timeHalfDay": "11:30-11:55",
+    "subject": "1B ICT / 1B LIB"
+  },
+  {
+    "dayCycle": "II",
+    "timeWholeDay": "1:20-1:55",
+    "timeHalfDay": "11:30-11:55",
+    "subject": "1B ENG"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "1:20-1:55",
+    "timeHalfDay": "11:30-11:55",
+    "subject": "1B MATH"
+  },
+  {
+    "dayCycle": "IV",
+    "timeWholeDay": "1:20-1:55",
+    "timeHalfDay": "11:30-11:55",
+    "subject": "1B ICT"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "1:20-1:55",
+    "timeHalfDay": "11:30-11:55",
+    "subject": "1B RE"
+  },
+  {
+    "dayCycle": "VI",
+    "timeWholeDay": "1:20-1:55",
+    "timeHalfDay": "11:30-11:55",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "1:20-1:55",
+    "timeHalfDay": "11:30-11:55",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "1:55-2:30",
+    "timeHalfDay": "11:55-12:20",
+    "subject": "1B PHum"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "1:55-2:30",
+    "timeHalfDay": "11:55-12:20",
+    "subject": "1B PE"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "1:55-2:30",
+    "timeHalfDay": "11:55-12:20",
+    "subject": "1B MUS"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "1:55-2:30",
+    "timeHalfDay": "11:55-12:20",
+    "subject": "1B CHI"
+  },
+  {
+    "dayCycle": "I",
+    "timeWholeDay": "2:30-3:00",
+    "timeHalfDay": "12:20-12:50",
+    "subject": "1B PHum"
+  },
+  {
+    "dayCycle": "III",
+    "timeWholeDay": "2:30-3:00",
+    "timeHalfDay": "12:20-12:50",
+    "subject": "Tutorial"
+  },
+  {
+    "dayCycle": "V",
+    "timeWholeDay": "2:30-3:00",
+    "timeHalfDay": "12:20-12:50",
+    "subject": "Tutorial"
+  },
+  {
+    "dayCycle": "VII",
+    "timeWholeDay": "2:30-3:00",
+    "timeHalfDay": "12:20-12:50",
+    "subject": "Tutorial"
+  }
+]
