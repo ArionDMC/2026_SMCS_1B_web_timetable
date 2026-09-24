@@ -59,6 +59,15 @@
     .section-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:18px 2px 12px; }
     .section-head h2 { margin:0; font-size:1.18rem; }
     .section-head p { margin:0; color:var(--muted); font-size:0.9rem; }
+    .date-picker {
+      min-height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: inherit;
+      padding: 8px 12px;
+      font-size: 0.95rem;
+    }
     .timetable { display:grid; gap:12px; }
     .lesson { border-radius:22px; padding:14px 14px 14px 16px; border:1px solid rgba(0,0,0,0.04); box-shadow:var(--shadow); color:#181612; }
     .lesson-inner { display:grid; grid-template-columns:108px 1fr auto; gap:12px; align-items:center; }
@@ -139,6 +148,7 @@
           <div>
             <h2>時間表</h2>
           </div>
+          <input type="date" id="datePicker" class="date-picker" />
         </div>
         <div id="todayList" class="timetable"></div>
       </section>
@@ -192,7 +202,7 @@
 
     const subjectColors = {
       CHI: '#efd4bf', ENG: '#c8d8ff', MATH: '#f5db93', SCI: '#d2e7cf', ICT: '#cce6ea',
-      'ICT/LIB': '#cce6ea', LIB: '#d8d7ef', PE: '#f7b8bd', PTH: '#e5d2f7', MUS: '#f4cfe2',
+      'ICT/LIB': '#cceada', LIB: '#d8d7ef', PE: '#f7b8bd', PTH: '#e5d2f7', MUS: '#f4cfe2',
       PHum: '#d8d0c7', RE: '#d7e8c9', VA: '#ffd7c7', IL: '#e3e3e3', Reading: '#d5ead8', Tutorial: '#e8d9c6'
     };
 
@@ -206,6 +216,7 @@
     const readingBookText = $('#readingBookText');
     const nextPeText = $('#nextPeText');
     const dayChip = $('#dayChip');
+    const datePicker = $('#datePicker');
     const subtitle = $('#subtitle');
     const daysGrid = $('#daysGrid');
     const themeToggle = $('#themeToggle');
@@ -262,6 +273,7 @@
       readingBookText.textContent = `Reading Book：${readingBookForDay(day)}`;
       const nextPe = nextPeDate(dateStr);
       nextPeText.textContent = nextPe ? `下一堂 PE：${formatDateLabel(nextPe)}` : '下一堂 PE：--';
+      if (datePicker) datePicker.value = dateStr;
       subtitle.textContent = day ? `時間表 · Day ${day}` : '時間表';
       calendarNote.textContent = day ? `${formatDateLabel(dateStr)} · Day ${day}` : `${formatDateLabel(dateStr)} · 沒有上課資料`;
       if (!day || !lessons.length) {
@@ -360,6 +372,11 @@
     });
     $('#todayBtn').addEventListener('click', () => setDate(todayFallbackDate || selectedDate));
     $('#nextSchoolDayBtn').addEventListener('click', () => setDate(nextSchoolDay(selectedDate || todayFallbackDate)));
+    datePicker.addEventListener('change', () => {
+      if (datePicker.value && dayCycle[datePicker.value] !== undefined) {
+        setDate(datePicker.value);
+      }
+    });
     $$('.nav button').forEach(btn => btn.addEventListener('click', () => showPanel(btn.dataset.panel)));
 
     async function startApp() {
@@ -379,6 +396,11 @@
       const availableDates = Object.keys(dayCycle).sort();
       const fallbackDate = dayCycle[todayStr] ? todayStr : availableDates.find(d => d >= todayStr) || availableDates[0];
       todayFallbackDate = fallbackDate;
+      if (datePicker) {
+        const sortedDates = availableDates;
+        datePicker.min = sortedDates[0] || '';
+        datePicker.max = sortedDates[sortedDates.length - 1] || '';
+      }
       currentMonthDate = fallbackDate ? new Date(fallbackDate + 'T00:00:00') : new Date();
       renderDayTable();
       if (fallbackDate) {
