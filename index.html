@@ -130,6 +130,7 @@
         <p id="subtitle">今日時間表</p>
       </div>
       <button class="theme-toggle" id="themeToggle" aria-label="切換深色模式">🌙</button>
+      <button class="theme-toggle" id="langToggle" aria-label="切換中/英文">中/EN</button>
     </header>
 
     <section class="hero-card">
@@ -212,6 +213,23 @@
       'ICT/LIB': '#8bc7d0', LIB: '#d8d7ef', PE: '#f7b8bd', PTH: '#e5d2f7', MUS: '#f4cfe2',
       PHum: '#d8d0c7', RE: '#d7e8c9', VA: '#ffd7c7', IL: '#e3e3e3', Reading: '#d5ead8', Tutorial: '#e8d9c6'
     };
+    const subjectNamesZh = {
+      ENG: '英文', CHI: '中文', MATH: '數學', 'ICT/LIB': '資訊科技/圖書', ICT: '資訊科技',
+      PTH: '普通話', SCI: '科學', PE: '體育', IL: '綜合', VA: '視覺藝術', PHum: '人文',
+      RE: '宗教', Reading: '閱讀', MUS: '音樂', Tutorial: '導師輔導'
+    };
+
+let currentLang = 'en';
+
+function normalizeSubjectKey(subject) {
+  return (subject || '').replace(/\s+/g, '');
+}
+
+function labelFor(subject) {
+  if (currentLang === 'en') return subject;
+  const key = normalizeSubjectKey(subject);
+  return subjectNamesZh[key] || subject;
+}
 
     const order = ['I','II','III','IV','V','VI','VII'];
     const weekdays = ['日','一','二','三','四','五','六'];
@@ -248,6 +266,14 @@
       currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', currentTheme);
       syncThemeIcon();
+    });
+
+    const langToggle = $('#langToggle');
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'zh' : 'en';
+      langToggle.textContent = currentLang === 'en' ? '中/EN' : 'EN/中';
+      if (selectedDate) setDate(selectedDate);
+      renderDayTable();
     });
 
     function formatDateLabel(v) {
@@ -290,7 +316,7 @@
           <article class="lesson" style="background:${colorFor(item.subject).trim() || '#ece7de'}">
             <div class="lesson-inner">
               <div class="time">${item.time}</div>
-              <div class="subject">${item.subject}</div>
+              <div class="subject">${labelFor(item.subject)}</div>
               <div class="tag">${item.subject}</div>
             </div>
           </article>
@@ -307,7 +333,7 @@
         const cells = order.map(day => {
           const item = timetable[day]?.[i];
           if (!item) return '<td></td>';
-          return `<td class="subject-cell" style="background:${colorFor(item.subject).trim() || '#ece7de'}">${item.subject}</td>`;
+          return `<td class="subject-cell" style="background:${colorFor(item.subject).trim() || '#ece7de'}">${labelFor(item.subject)}</td>`;
         }).join('');
         rows.push(`<tr><td class="time-col">${sampleTime}</td>${cells}</tr>`);
       }
