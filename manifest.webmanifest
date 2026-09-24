@@ -1,6 +1,6 @@
 {
   "name": "SMCS 2026 Class 1B Timetable",
-  "short_name": "Class 1B",
+  "short_name": "Class 1B Timetable",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f5f3ee",
