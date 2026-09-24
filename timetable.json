@@ -1,632 +1,79 @@
-[
-  {
-    "day": "I",
-    "half_day_time": "7:30–8:05",
-    "whole_day_time": "7:30–8:05",
-    "subject": "Reading Session"
-  },
-  {
-    "day": "II",
-    "half_day_time": "7:30–8:05",
-    "whole_day_time": "7:30–8:05",
-    "subject": "Reading Session"
-  },
-  {
-    "day": "III",
-    "half_day_time": "7:30–8:05",
-    "whole_day_time": "7:30–8:05",
-    "subject": "Reading Session"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "7:30–8:05",
-    "whole_day_time": "7:30–8:05",
-    "subject": "Reading Session"
-  },
-  {
-    "day": "V",
-    "half_day_time": "7:30–8:05",
-    "whole_day_time": "7:30–8:05",
-    "subject": "Reading Session"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "7:30–8:05",
-    "whole_day_time": "7:30–8:05",
-    "subject": "Reading Session"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "7:30–8:05",
-    "whole_day_time": "7:30–8:05",
-    "subject": "Reading Session"
-  },
-  {
-    "day": "I",
-    "half_day_time": "8:05–8:25",
-    "whole_day_time": "8:05–8:25",
-    "subject": "Assembly"
-  },
-  {
-    "day": "II",
-    "half_day_time": "8:05–8:25",
-    "whole_day_time": "8:05–8:25",
-    "subject": "Assembly"
-  },
-  {
-    "day": "III",
-    "half_day_time": "8:05–8:25",
-    "whole_day_time": "8:05–8:25",
-    "subject": "Assembly"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "8:05–8:25",
-    "whole_day_time": "8:05–8:25",
-    "subject": "Assembly"
-  },
-  {
-    "day": "V",
-    "half_day_time": "8:05–8:25",
-    "whole_day_time": "8:05–8:25",
-    "subject": "Assembly"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "8:05–8:25",
-    "whole_day_time": "8:05–8:25",
-    "subject": "Assembly"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "8:05–8:25",
-    "whole_day_time": "8:05–8:25",
-    "subject": "Assembly"
-  },
-  {
-    "day": "I",
-    "half_day_time": "8:25–8:50",
-    "whole_day_time": "8:25–9:00",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "II",
-    "half_day_time": "8:25–8:50",
-    "whole_day_time": "8:25–9:00",
-    "subject": "1B VA"
-  },
-  {
-    "day": "III",
-    "half_day_time": "8:25–8:50",
-    "whole_day_time": "8:25–9:00",
-    "subject": "1B PTH"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "8:25–8:50",
-    "whole_day_time": "8:25–9:00",
-    "subject": "1B SCI"
-  },
-  {
-    "day": "V",
-    "half_day_time": "8:25–8:50",
-    "whole_day_time": "8:25–9:00",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "8:25–8:50",
-    "whole_day_time": "8:25–9:00",
-    "subject": "1B PHum"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "8:25–8:50",
-    "whole_day_time": "8:25–9:00",
-    "subject": "1B SCI"
-  },
-  {
-    "day": "I",
-    "half_day_time": "8:50–9:15",
-    "whole_day_time": "9:00–9:35",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "II",
-    "half_day_time": "8:50–9:15",
-    "whole_day_time": "9:00–9:35",
-    "subject": "1B VA"
-  },
-  {
-    "day": "III",
-    "half_day_time": "8:50–9:15",
-    "whole_day_time": "9:00–9:35",
-    "subject": "1B MUS"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "8:50–9:15",
-    "whole_day_time": "9:00–9:35",
-    "subject": "1B SCI"
-  },
-  {
-    "day": "V",
-    "half_day_time": "8:50–9:15",
-    "whole_day_time": "9:00–9:35",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "8:50–9:15",
-    "whole_day_time": "9:00–9:35",
-    "subject": "1B PHum"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "8:50–9:15",
-    "whole_day_time": "9:00–9:35",
-    "subject": "1B SCI"
-  },
-  {
-    "day": "I",
-    "half_day_time": "9:15–9:30",
-    "whole_day_time": "9:35–9:50",
-    "subject": "Recess"
-  },
-  {
-    "day": "II",
-    "half_day_time": "9:15–9:30",
-    "whole_day_time": "9:35–9:50",
-    "subject": "Recess"
-  },
-  {
-    "day": "III",
-    "half_day_time": "9:15–9:30",
-    "whole_day_time": "9:35–9:50",
-    "subject": "Recess"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "9:15–9:30",
-    "whole_day_time": "9:35–9:50",
-    "subject": "Recess"
-  },
-  {
-    "day": "V",
-    "half_day_time": "9:15–9:30",
-    "whole_day_time": "9:35–9:50",
-    "subject": "Recess"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "9:15–9:30",
-    "whole_day_time": "9:35–9:50",
-    "subject": "Recess"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "9:15–9:30",
-    "whole_day_time": "9:35–9:50",
-    "subject": "Recess"
-  },
-  {
-    "day": "I",
-    "half_day_time": "9:30–9:55",
-    "whole_day_time": "9:50–10:25",
-    "subject": "1B MATH"
-  },
-  {
-    "day": "II",
-    "half_day_time": "9:30–9:55",
-    "whole_day_time": "9:50–10:25",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "III",
-    "half_day_time": "9:30–9:55",
-    "whole_day_time": "9:50–10:25",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "9:30–9:55",
-    "whole_day_time": "9:50–10:25",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "V",
-    "half_day_time": "9:30–9:55",
-    "whole_day_time": "9:50–10:25",
-    "subject": "1B MATH"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "9:30–9:55",
-    "whole_day_time": "9:50–10:25",
-    "subject": "1B MATH"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "9:30–9:55",
-    "whole_day_time": "9:50–10:25",
-    "subject": "1B MUS"
-  },
-  {
-    "day": "I",
-    "half_day_time": "9:55–10:20",
-    "whole_day_time": "10:25–11:00",
-    "subject": "1B MATH"
-  },
-  {
-    "day": "II",
-    "half_day_time": "9:55–10:20",
-    "whole_day_time": "10:25–11:00",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "III",
-    "half_day_time": "9:55–10:20",
-    "whole_day_time": "10:25–11:00",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "9:55–10:20",
-    "whole_day_time": "10:25–11:00",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "V",
-    "half_day_time": "9:55–10:20",
-    "whole_day_time": "10:25–11:00",
-    "subject": "1B VA"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "9:55–10:20",
-    "whole_day_time": "10:25–11:00",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "9:55–10:20",
-    "whole_day_time": "10:25–11:00",
-    "subject": "1B MATH"
-  },
-  {
-    "day": "I",
-    "half_day_time": "10:20–10:30",
-    "whole_day_time": "11:00–11:10",
-    "subject": "Break"
-  },
-  {
-    "day": "II",
-    "half_day_time": "10:20–10:30",
-    "whole_day_time": "11:00–11:10",
-    "subject": "Break"
-  },
-  {
-    "day": "III",
-    "half_day_time": "10:20–10:30",
-    "whole_day_time": "11:00–11:10",
-    "subject": "Break"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "10:20–10:30",
-    "whole_day_time": "11:00–11:10",
-    "subject": "Break"
-  },
-  {
-    "day": "V",
-    "half_day_time": "10:20–10:30",
-    "whole_day_time": "11:00–11:10",
-    "subject": "Break"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "10:20–10:30",
-    "whole_day_time": "11:00–11:10",
-    "subject": "Break"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "10:20–10:30",
-    "whole_day_time": "11:00–11:10",
-    "subject": "Break"
-  },
-  {
-    "day": "I",
-    "half_day_time": "10:30–10:55",
-    "whole_day_time": "11:10–11:45",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "II",
-    "half_day_time": "10:30–10:55",
-    "whole_day_time": "11:10–11:45",
-    "subject": "1B RE"
-  },
-  {
-    "day": "III",
-    "half_day_time": "10:30–10:55",
-    "whole_day_time": "11:10–11:45",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "10:30–10:55",
-    "whole_day_time": "11:10–11:45",
-    "subject": "1B MATH"
-  },
-  {
-    "day": "V",
-    "half_day_time": "10:30–10:55",
-    "whole_day_time": "11:10–11:45",
-    "subject": "1B Reading"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "10:30–10:55",
-    "whole_day_time": "11:10–11:45",
-    "subject": "1B PE"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "10:30–10:55",
-    "whole_day_time": "11:10–11:45",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "I",
-    "half_day_time": "10:55–11:20",
-    "whole_day_time": "11:45–12:20",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "II",
-    "half_day_time": "10:55–11:20",
-    "whole_day_time": "11:45–12:20",
-    "subject": "1B MATH"
-  },
-  {
-    "day": "III",
-    "half_day_time": "10:55–11:20",
-    "whole_day_time": "11:45–12:20",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "10:55–11:20",
-    "whole_day_time": "11:45–12:20",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "V",
-    "half_day_time": "10:55–11:20",
-    "whole_day_time": "11:45–12:20",
-    "subject": "1B Reading"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "10:55–11:20",
-    "whole_day_time": "11:45–12:20",
-    "subject": "1B PE"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "10:55–11:20",
-    "whole_day_time": "11:45–12:20",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "I",
-    "half_day_time": "11:20–11:30 Break",
-    "whole_day_time": "12:20–12:50",
-    "subject": "Lunch"
-  },
-  {
-    "day": "II",
-    "half_day_time": "11:20–11:30 Break",
-    "whole_day_time": "12:20–12:50",
-    "subject": "Lunch"
-  },
-  {
-    "day": "III",
-    "half_day_time": "11:20–11:30 Break",
-    "whole_day_time": "12:20–12:50",
-    "subject": "Lunch"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "11:20–11:30 Break",
-    "whole_day_time": "12:20–12:50",
-    "subject": "Lunch"
-  },
-  {
-    "day": "V",
-    "half_day_time": "11:20–11:30 Break",
-    "whole_day_time": "12:20–12:50",
-    "subject": "Lunch"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "11:20–11:30 Break",
-    "whole_day_time": "12:20–12:50",
-    "subject": "Lunch"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "11:20–11:30 Break",
-    "whole_day_time": "12:20–12:50",
-    "subject": "Lunch"
-  },
-  {
-    "day": "I",
-    "half_day_time": "",
-    "whole_day_time": "12:50–1:20",
-    "subject": "Lunch Break"
-  },
-  {
-    "day": "II",
-    "half_day_time": "",
-    "whole_day_time": "12:50–1:20",
-    "subject": "Lunch Break"
-  },
-  {
-    "day": "III",
-    "half_day_time": "",
-    "whole_day_time": "12:50–1:20",
-    "subject": "Lunch Break"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "",
-    "whole_day_time": "12:50–1:20",
-    "subject": "Lunch Break"
-  },
-  {
-    "day": "V",
-    "half_day_time": "",
-    "whole_day_time": "12:50–1:20",
-    "subject": "Lunch Break"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "",
-    "whole_day_time": "12:50–1:20",
-    "subject": "Lunch Break"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "",
-    "whole_day_time": "12:50–1:20",
-    "subject": "Lunch Break"
-  },
-  {
-    "day": "I",
-    "half_day_time": "11:30–11:55",
-    "whole_day_time": "1:20–1:55",
-    "subject": "1B ICT (1B LIB)"
-  },
-  {
-    "day": "II",
-    "half_day_time": "11:30–11:55",
-    "whole_day_time": "1:20–1:55",
-    "subject": "1B ENG"
-  },
-  {
-    "day": "III",
-    "half_day_time": "11:30–11:55",
-    "whole_day_time": "1:20–1:55",
-    "subject": "1B MATH"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "11:30–11:55",
-    "whole_day_time": "1:20–1:55",
-    "subject": "1B ICT"
-  },
-  {
-    "day": "V",
-    "half_day_time": "11:30–11:55",
-    "whole_day_time": "1:20–1:55",
-    "subject": "1B RE"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "11:30–11:55",
-    "whole_day_time": "1:20–1:55",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "11:30–11:55",
-    "whole_day_time": "1:20–1:55",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "I",
-    "half_day_time": "11:55–12:20",
-    "whole_day_time": "1:55–2:30",
-    "subject": "1B PHum"
-  },
-  {
-    "day": "II",
-    "half_day_time": "11:55–12:20",
-    "whole_day_time": "1:55–2:30",
-    "subject": "IL"
-  },
-  {
-    "day": "III",
-    "half_day_time": "11:55–12:20",
-    "whole_day_time": "1:55–2:30",
-    "subject": "1B PE"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "11:55–12:20",
-    "whole_day_time": "1:55–2:30",
-    "subject": "IL"
-  },
-  {
-    "day": "V",
-    "half_day_time": "11:55–12:20",
-    "whole_day_time": "1:55–2:30",
-    "subject": "1B MUS"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "11:55–12:20",
-    "whole_day_time": "1:55–2:30",
-    "subject": "IL"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "11:55–12:20",
-    "whole_day_time": "1:55–2:30",
-    "subject": "1B CHI"
-  },
-  {
-    "day": "I",
-    "half_day_time": "12:20–12:50",
-    "whole_day_time": "2:30–3:00",
-    "subject": "1B PHum"
-  },
-  {
-    "day": "II",
-    "half_day_time": "12:20–12:50",
-    "whole_day_time": "2:30–3:00",
-    "subject": "IL"
-  },
-  {
-    "day": "III",
-    "half_day_time": "12:20–12:50",
-    "whole_day_time": "2:30–3:00",
-    "subject": "Tutorial"
-  },
-  {
-    "day": "IV",
-    "half_day_time": "12:20–12:50",
-    "whole_day_time": "2:30–3:00",
-    "subject": "IL"
-  },
-  {
-    "day": "V",
-    "half_day_time": "12:20–12:50",
-    "whole_day_time": "2:30–3:00",
-    "subject": "Tutorial"
-  },
-  {
-    "day": "VI",
-    "half_day_time": "12:20–12:50",
-    "whole_day_time": "2:30–3:00",
-    "subject": "IL"
-  },
-  {
-    "day": "VII",
-    "half_day_time": "12:20–12:50",
-    "whole_day_time": "2:30–3:00",
-    "subject": "Tutorial"
-  }
-]
+{
+  "Day I": [
+    {"start":"08:25","end":"08:50","subject":"CHI"},
+    {"start":"08:50","end":"09:15","subject":"CHI"},
+    {"start":"09:30","end":"09:55","subject":"MATH"},
+    {"start":"09:55","end":"10:20","subject":"MATH"},
+    {"start":"10:30","end":"10:55","subject":"ENG"},
+    {"start":"10:55","end":"11:20","subject":"ENG"},
+    {"start":"11:30","end":"11:55","subject":"ICT / LIB"},
+    {"start":"11:55","end":"12:20","subject":"PHum"},
+    {"start":"12:20","end":"12:50","subject":"PHum"}
+  ],
+  "Day II": [
+    {"start":"08:25","end":"08:50","subject":"VA"},
+    {"start":"08:50","end":"09:15","subject":"VA"},
+    {"start":"09:30","end":"09:55","subject":"CHI"},
+    {"start":"09:55","end":"10:20","subject":"CHI"},
+    {"start":"10:30","end":"10:55","subject":"RE"},
+    {"start":"10:55","end":"11:20","subject":"MATH"},
+    {"start":"11:30","end":"11:55","subject":"ENG"},
+    {"start":"11:55","end":"12:20","subject":"IL"},
+    {"start":"12:20","end":"12:50","subject":"IL"}
+  ],
+  "Day III": [
+    {"start":"08:25","end":"08:50","subject":"PTH"},
+    {"start":"08:50","end":"09:15","subject":"MUS"},
+    {"start":"09:30","end":"09:55","subject":"ENG"},
+    {"start":"09:55","end":"10:20","subject":"ENG"},
+    {"start":"10:30","end":"10:55","subject":"CHI"},
+    {"start":"10:55","end":"11:20","subject":"CHI"},
+    {"start":"11:30","end":"11:55","subject":"MATH"},
+    {"start":"11:55","end":"12:20","subject":"PE"},
+    {"start":"12:20","end":"12:50","subject":"Tutorial"}
+  ],
+  "Day IV": [
+    {"start":"08:25","end":"08:50","subject":"SCI"},
+    {"start":"08:50","end":"09:15","subject":"SCI"},
+    {"start":"09:30","end":"09:55","subject":"CHI"},
+    {"start":"09:55","end":"10:20","subject":"CHI"},
+    {"start":"10:30","end":"10:55","subject":"MATH"},
+    {"start":"10:55","end":"11:20","subject":"ENG"},
+    {"start":"11:30","end":"11:55","subject":"ICT"},
+    {"start":"11:55","end":"12:20","subject":"IL"},
+    {"start":"12:20","end":"12:50","subject":"IL"}
+  ],
+  "Day V": [
+    {"start":"08:25","end":"08:50","subject":"CHI"},
+    {"start":"08:50","end":"09:15","subject":"CHI"},
+    {"start":"09:30","end":"09:55","subject":"MATH"},
+    {"start":"09:55","end":"10:20","subject":"VA"},
+    {"start":"10:30","end":"10:55","subject":"Reading"},
+    {"start":"10:55","end":"11:20","subject":"Reading"},
+    {"start":"11:30","end":"11:55","subject":"RE"},
+    {"start":"11:55","end":"12:20","subject":"MUS"},
+    {"start":"12:20","end":"12:50","subject":"Tutorial"}
+  ],
+  "Day VI": [
+    {"start":"08:25","end":"08:50","subject":"PHum"},
+    {"start":"08:50","end":"09:15","subject":"PHum"},
+    {"start":"09:30","end":"09:55","subject":"MATH"},
+    {"start":"09:55","end":"10:20","subject":"ENG"},
+    {"start":"10:30","end":"10:55","subject":"PE"},
+    {"start":"10:55","end":"11:20","subject":"PE"},
+    {"start":"11:30","end":"11:55","subject":"CHI"},
+    {"start":"11:55","end":"12:20","subject":"IL"},
+    {"start":"12:20","end":"12:50","subject":"IL"}
+  ],
+  "Day VII": [
+    {"start":"08:25","end":"08:50","subject":"SCI"},
+    {"start":"08:50","end":"09:15","subject":"SCI"},
+    {"start":"09:30","end":"09:55","subject":"MUS"},
+    {"start":"09:55","end":"10:20","subject":"MATH"},
+    {"start":"10:30","end":"10:55","subject":"ENG"},
+    {"start":"10:55","end":"11:20","subject":"ENG"},
+    {"start":"11:30","end":"11:55","subject":"CHI"},
+    {"start":"11:55","end":"12:20","subject":"CHI"},
+    {"start":"12:20","end":"12:50","subject":"Tutorial"}
+  ]
+}
