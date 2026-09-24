@@ -4,13 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>SMCS 2026 Class 1B Timetable</title>
-<link rel="manifest" href="./manifest.webmanifest">
-<meta name="theme-color" content="#ffbf47">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Class 1B">
-<link rel="apple-touch-icon" href="./assets/icon-192.png">
-
   <style>
     :root, [data-theme="light"] {
       --bg: #f5f3ee;
@@ -57,6 +50,7 @@
     [data-theme="dark"] .eyebrow { color:#ffd98b; }
     .hero-date { font-size:1.28rem; font-weight:800; margin:0 0 4px; }
     .hero-sub { margin:0; color:var(--muted); }
+    .hero-extra { margin-top:4px; }
     .day-chip { white-space:nowrap; border-radius:16px; background:rgba(0,0,0,0.72); color:#fff8ea; padding:12px 14px; font-weight:800; }
     .quickbar { display:flex; gap:10px; overflow:auto; }
     .quickbar button { min-height:44px; border-radius:14px; border:1px solid var(--border); background:rgba(255,255,255,0.55); color:var(--text); padding:12px 14px; white-space:nowrap; }
@@ -116,8 +110,8 @@
   <div class="app">
     <header class="topbar">
       <div class="title-wrap">
-        <h1>Class 1B</h1>
-        <p id="subtitle">今日課表</p>
+        <h1>SMCS 2026 Class 1B</h1>
+        <p id="subtitle">今日時間表</p>
       </div>
       <button class="theme-toggle" id="themeToggle" aria-label="切換深色模式">🌙</button>
     </header>
@@ -128,6 +122,8 @@
           <div class="eyebrow">時間表</div>
           <p class="hero-date" id="heroDate">--</p>
           <p class="hero-sub" id="heroMeta">--</p>
+          <p class="hero-sub hero-extra" id="readingBookText">Reading Book：--</p>
+          <p class="hero-sub hero-extra" id="nextPeText">下一堂 PE：--</p>
         </div>
         <div class="day-chip" id="dayChip">Day --</div>
       </div>
@@ -141,7 +137,7 @@
       <section id="panel-timetable" class="panel active">
         <div class="section-head">
           <div>
-            <h2>課表</h2>
+            <h2>時間表</h2>
           </div>
         </div>
         <div id="todayList" class="timetable"></div>
@@ -182,67 +178,16 @@
   </div>
 
   <nav class="nav" aria-label="底部導航">
-    <button class="active" data-panel="timetable">課表</button>
+    <button class="active" data-panel="timetable">時間表</button>
     <button data-panel="days">Day 1-7</button>
     <button data-panel="calendar">月曆</button>
   </nav>
 
   <script>
-    const timetable = {
-      'I': [
-        { time: '08:25–09:00', subject: 'CHI' }, { time: '09:00–09:35', subject: 'CHI' },
-        { time: '09:50–10:25', subject: 'MATH' }, { time: '10:25–11:00', subject: 'MATH' },
-        { time: '11:10–11:45', subject: 'ENG' }, { time: '11:45–12:20', subject: 'ENG' },
-        { time: '12:01–01:55', subject: 'ICT/LIB' }, { time: '01:55–02:30', subject: 'PHum' },
-        { time: '02:30–03:00', subject: 'PHum' }
-      ],
-      'II': [
-        { time: '08:25–09:00', subject: 'VA' }, { time: '09:00–09:35', subject: 'VA' },
-        { time: '09:50–10:25', subject: 'CHI' }, { time: '10:25–11:00', subject: 'CHI' },
-        { time: '11:10–11:45', subject: 'RE' }, { time: '11:45–12:20', subject: 'MATH' },
-        { time: '12:01–01:55', subject: 'ENG' }, { time: '01:55–02:30', subject: 'IL' },
-        { time: '02:30–03:00', subject: 'IL' }
-      ],
-      'III': [
-        { time: '08:25–09:00', subject: 'PTH' }, { time: '09:00–09:35', subject: 'MUS' },
-        { time: '09:50–10:25', subject: 'ENG' }, { time: '10:25–11:00', subject: 'ENG' },
-        { time: '11:10–11:45', subject: 'CHI' }, { time: '11:45–12:20', subject: 'CHI' },
-        { time: '12:01–01:55', subject: 'MATH' }, { time: '01:55–02:30', subject: 'PE' },
-        { time: '02:30–03:00', subject: 'Tutorial' }
-      ],
-      'IV': [
-        { time: '08:25–09:00', subject: 'SCI' }, { time: '09:00–09:35', subject: 'SCI' },
-        { time: '09:50–10:25', subject: 'CHI' }, { time: '10:25–11:00', subject: 'CHI' },
-        { time: '11:10–11:45', subject: 'MATH' }, { time: '11:45–12:20', subject: 'ENG' },
-        { time: '12:01–01:55', subject: 'ICT' }, { time: '01:55–02:30', subject: 'IL' },
-        { time: '02:30–03:00', subject: 'IL' }
-      ],
-      'V': [
-        { time: '08:25–09:00', subject: 'CHI' }, { time: '09:00–09:35', subject: 'CHI' },
-        { time: '09:50–10:25', subject: 'MATH' }, { time: '10:25–11:00', subject: 'VA' },
-        { time: '11:10–11:45', subject: 'Reading' }, { time: '11:45–12:20', subject: 'Reading' },
-        { time: '12:01–01:55', subject: 'RE' }, { time: '01:55–02:30', subject: 'MUS' },
-        { time: '02:30–03:00', subject: 'Tutorial' }
-      ],
-      'VI': [
-        { time: '08:25–09:00', subject: 'PHum' }, { time: '09:00–09:35', subject: 'PHum' },
-        { time: '09:50–10:25', subject: 'MATH' }, { time: '10:25–11:00', subject: 'ENG' },
-        { time: '11:10–11:45', subject: 'PE' }, { time: '11:45–12:20', subject: 'PE' },
-        { time: '12:01–01:55', subject: 'CHI' }, { time: '01:55–02:30', subject: 'IL' },
-        { time: '02:30–03:00', subject: 'IL' }
-      ],
-      'VII': [
-        { time: '08:25–09:00', subject: 'SCI' }, { time: '09:00–09:35', subject: 'SCI' },
-        { time: '09:50–10:25', subject: 'MUS' }, { time: '10:25–11:00', subject: 'MATH' },
-        { time: '11:10–11:45', subject: 'ENG' }, { time: '11:45–12:20', subject: 'ENG' },
-        { time: '12:01–01:55', subject: 'CHI' }, { time: '01:55–02:30', subject: 'CHI' },
-        { time: '02:30–03:00', subject: 'Tutorial' }
-      ]
-    };
-
-    const dayCycle = {
-      '2026-09-07':'I','2026-09-08':'II','2026-09-09':'III','2026-09-10':'IV','2026-09-11':'V','2026-09-14':'VI','2026-09-15':'VII','2026-09-16':'I','2026-09-17':'II','2026-09-18':'III','2026-09-21':'IV','2026-09-22':'V','2026-09-23':'VI','2026-09-24':'VII','2026-09-25':'I','2026-09-28':'II','2026-09-29':'III','2026-09-30':'IV','2026-10-02':'V','2026-10-05':'VI','2026-10-06':'VII','2026-10-07':'I','2026-10-08':'II','2026-10-09':'III','2026-10-12':'IV','2026-10-13':'V','2026-10-14':'VI','2026-10-15':'VII','2026-10-16':'I','2026-10-19':'II','2026-10-20':'III','2026-10-21':'IV','2026-10-22':'V','2026-10-23':'VI','2026-10-26':'V','2026-10-27':'VI','2026-10-28':'VII','2026-10-29':'I','2026-10-30':'II','2026-11-02':'III','2026-11-03':'IV','2026-11-04':'V','2026-11-05':'VI','2026-11-06':'VII','2026-11-16':'I','2026-11-17':'II','2026-11-18':'III','2026-11-19':'IV','2026-11-20':'V','2026-11-23':'VI','2026-11-24':'VII','2026-11-25':'I','2026-11-26':'II','2026-11-27':'III','2026-11-30':'IV','2027-01-04':'V','2027-01-05':'VI','2027-01-06':'VII','2027-01-07':'I','2027-01-08':'II','2027-01-11':'III','2027-01-12':'IV','2027-01-13':'V','2027-01-14':'VI','2027-01-15':'VII','2027-01-18':'I','2027-01-19':'II','2027-01-20':'III','2027-01-21':'IV','2027-01-22':'V','2027-01-25':'VI','2027-01-26':'VII','2027-01-27':'I','2027-01-28':'II','2027-01-29':'III','2027-02-01':'IV','2027-02-02':'V','2027-02-16':'VI','2027-02-17':'VII','2027-02-18':'I','2027-02-19':'II','2027-02-22':'III','2027-02-23':'IV','2027-02-24':'V','2027-02-25':'VI','2027-02-26':'VII','2027-03-01':'I','2027-03-02':'II','2027-03-03':'III','2027-03-04':'IV','2027-03-05':'V','2027-03-15':'VI','2027-03-16':'VII','2027-03-17':'I','2027-03-18':'II','2027-03-19':'III','2027-03-22':'IV','2027-03-23':'V','2027-04-06':'VI','2027-04-07':'VII','2027-04-08':'I','2027-04-09':'II','2027-04-12':'III','2027-04-13':'IV','2027-04-14':'V','2027-04-15':'VI','2027-04-16':'VII','2027-04-19':'I','2027-04-20':'II','2027-04-21':'III','2027-04-22':'IV','2027-04-23':'V','2027-04-26':'VI','2027-04-27':'VII','2027-04-28':'I','2027-04-29':'II','2027-04-30':'III','2027-05-03':'IV','2027-05-04':'V','2027-05-05':'VI','2027-05-07':'VII','2027-05-10':'I','2027-05-11':'II','2027-05-12':'III','2027-05-14':'IV','2027-05-17':'V','2027-05-18':'VI','2027-05-19':'VII','2027-05-20':'I','2027-05-21':'II','2027-05-24':'III','2027-05-25':'IV','2027-05-26':'V','2027-05-27':'VI','2027-05-28':'VII','2027-06-07':'I','2027-06-08':'II','2027-06-10':'III','2027-06-11':'IV','2027-06-14':'V','2027-06-15':'VI','2027-06-16':'VII','2027-06-17':'I','2027-06-18':'II','2027-06-21':'III','2027-06-22':'IV','2027-06-23':'V','2027-06-24':'VI','2027-06-25':'VII','2027-06-28':'I','2027-06-29':'II','2027-06-30':'III','2027-07-02':'IV','2027-07-05':'V','2027-07-06':'VI','2027-07-07':'VII','2027-07-08':'I'
-    };
+    
+    const DATA_URLS = { timetable: './timetable.json', dayCycle: './day-cycle.json' };
+    let timetable = {};
+    let dayCycle = {};
 
     const subjectColors = {
       CHI: '#efd4bf', ENG: '#c8d8ff', MATH: '#f5db93', SCI: '#d2e7cf', ICT: '#cce6ea',
@@ -257,6 +202,8 @@
     const todayList = $('#todayList');
     const heroDate = $('#heroDate');
     const heroMeta = $('#heroMeta');
+    const readingBookText = $('#readingBookText');
+    const nextPeText = $('#nextPeText');
     const dayChip = $('#dayChip');
     const subtitle = $('#subtitle');
     const daysGrid = $('#daysGrid');
@@ -289,6 +236,19 @@
       return d.toLocaleDateString('zh-HK', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
     }
     function colorFor(subject) { return subjectColors[subject] || getComputedStyle(document.documentElement).getPropertyValue('--subject-default'); }
+
+    function readingBookForDay(day) {
+      if (['I', 'II', 'III'].includes(day)) return '英文';
+      if (['IV', 'V', 'VI'].includes(day)) return '中文';
+      if (day === 'VII') return '英文/中文';
+      return '--';
+    }
+
+    function nextPeDate(fromDate) {
+      return Object.keys(dayCycle).sort().find(date =>
+        date >= fromDate && ['III', 'VI'].includes(dayCycle[date])
+      ) || null;
+    }
     function setDate(dateStr) {
       selectedDate = dateStr;
       const day = dayCycle[dateStr];
@@ -296,7 +256,10 @@
       heroDate.textContent = formatDateLabel(dateStr);
       heroMeta.textContent = day ? '依照 Day Cycle 顯示當日時間表' : '這天沒有上課資料';
       dayChip.textContent = day ? `Day ${day}` : 'No School';
-      subtitle.textContent = day ? `課表 · Day ${day}` : '課表';
+      readingBookText.textContent = `Reading Book：${readingBookForDay(day)}`;
+      const nextPe = nextPeDate(dateStr);
+      nextPeText.textContent = nextPe ? `下一堂 PE：${formatDateLabel(nextPe)}` : '下一堂 PE：--';
+      subtitle.textContent = day ? `時間表 · Day ${day}` : '時間表';
       calendarNote.textContent = day ? `${formatDateLabel(dateStr)} · Day ${day}` : `${formatDateLabel(dateStr)} · 沒有上課資料`;
       if (!day || !lessons.length) {
         todayList.innerHTML = '<div class="empty">這天沒有 timetable 資料。</div>';
@@ -396,19 +359,54 @@
     $('#nextSchoolDayBtn').addEventListener('click', () => setDate(nextSchoolDay(selectedDate || fallbackDate)));
     $$('.nav button').forEach(btn => btn.addEventListener('click', () => showPanel(btn.dataset.panel)));
 
-    const today = new Date();
-    const todayStr = today.toISOString().slice(0, 10);
-    const fallbackDate = dayCycle[todayStr] ? todayStr : Object.keys(dayCycle).find(d => d >= todayStr) || Object.keys(dayCycle)[0];
-    currentMonthDate = new Date(fallbackDate + 'T00:00:00');
-    renderDayTable();
-    setDate(fallbackDate);
-  
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
-  });
-}
+    async function startApp() {
+      try {
+        await loadJsonData();
+      } catch (err) {
+        console.error(err);
+        heroDate.textContent = '資料載入失敗';
+        heroMeta.textContent = err.message || '無法讀取 JSON';
+        dayChip.textContent = 'Day --';
+        todayList.innerHTML = '<div class="empty">' + (err.message || '無法讀取 JSON') + '</div>';
+        daysGrid.innerHTML = '<div class="empty">' + (err.message || '無法讀取 JSON') + '</div>';
+        return;
+      }
+      const today = new Date();
+      const todayStr = today.toISOString().slice(0, 10);
+      const availableDates = Object.keys(dayCycle).sort();
+      const fallbackDate = dayCycle[todayStr] ? todayStr : availableDates.find(d => d >= todayStr) || availableDates[0];
+      currentMonthDate = fallbackDate ? new Date(fallbackDate + 'T00:00:00') : new Date();
+      renderDayTable();
+      if (fallbackDate) {
+        setDate(fallbackDate);
+      } else {
+        heroDate.textContent = '未有日期資料';
+        heroMeta.textContent = '找不到 day-cycle 資料';
+        dayChip.textContent = 'Day --';
+        todayList.innerHTML = '<div class="empty">day-cycle.json 未有可用日期。</div>';
+      }
+    }
 
-</script>
+    async function loadJsonData() {
+      const [timetableRes, dayCycleRes] = await Promise.all([
+        fetch(DATA_URLS.timetable + '?v=' + Date.now(), { cache: 'no-store' }),
+        fetch(DATA_URLS.dayCycle + '?v=' + Date.now(), { cache: 'no-store' })
+      ]);
+
+      if (!timetableRes.ok) throw new Error('timetable.json 載入失敗 (' + timetableRes.status + ')');
+      if (!dayCycleRes.ok) throw new Error('day-cycle.json 載入失敗 (' + dayCycleRes.status + ')');
+
+      const t = await timetableRes.json();
+      const d = await dayCycleRes.json();
+
+      if (!t || typeof t !== 'object' || !Object.keys(t).length) throw new Error('timetable.json 沒有可用資料');
+      if (!d || typeof d !== 'object' || !Object.keys(d).length) throw new Error('day-cycle.json 沒有可用資料');
+
+      timetable = t;
+      dayCycle = d;
+    }
+
+    startApp();
+  </script>
 </body>
 </html>
