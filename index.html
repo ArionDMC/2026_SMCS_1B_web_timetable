@@ -387,6 +387,34 @@
       }
     }
 
+    function normalizeDayKey(v) {
+      if (!v) return null;
+      let s = String(v).trim().toUpperCase();
+      s = s.replace(/^DAY\s*/, '');
+      const map = { '1':'I', '2':'II', '3':'III', '4':'IV', '5':'V', '6':'VI', '7':'VII' };
+      return map[s] || s;
+    }
+
+    function normalizeTimetableKeys(data) {
+      const out = {};
+      for (const [key, lessons] of Object.entries(data || {})) {
+        const day = normalizeDayKey(key);
+        out[day] = (lessons || []).map(item => ({
+          time: item.time || (item.start && item.end ? `${item.start}\u2013${item.end}` : ''),
+          subject: (item.subject || '').trim()
+        }));
+      }
+      return out;
+    }
+
+    function normalizeDayCycleKeys(data) {
+      const out = {};
+      for (const [date, day] of Object.entries(data || {})) {
+        out[date] = normalizeDayKey(day);
+      }
+      return out;
+    }
+
     async function loadJsonData() {
       const [timetableRes, dayCycleRes] = await Promise.all([
         fetch(DATA_URLS.timetable + '?v=' + Date.now(), { cache: 'no-store' }),
@@ -402,8 +430,8 @@
       if (!t || typeof t !== 'object' || !Object.keys(t).length) throw new Error('timetable.json 沒有可用資料');
       if (!d || typeof d !== 'object' || !Object.keys(d).length) throw new Error('day-cycle.json 沒有可用資料');
 
-      timetable = t;
-      dayCycle = d;
+      timetable = normalizeTimetableKeys(t);
+      dayCycle = normalizeDayCycleKeys(d);
     }
 
     startApp();
