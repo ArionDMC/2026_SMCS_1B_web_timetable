@@ -287,7 +287,7 @@
       const day = dayCycle[dateStr];
       const lessons = day ? timetable[day] || [] : [];
       heroDate.textContent = formatDateLabel(dateStr);
-      heroMeta.textContent = day ? '依照 Day Cycle 顯示 Whole Day 課堂' : '這天沒有上課資料';
+      heroMeta.textContent = day ? '依照 Day Cycle 顯示當日時間表' : '這天沒有上課資料';
       dayChip.textContent = day ? `Day ${day}` : 'No School';
       subtitle.textContent = day ? `課表 · Day ${day}` : '課表';
       calendarNote.textContent = day ? `${formatDateLabel(dateStr)} · Day ${day}` : `${formatDateLabel(dateStr)} · 沒有上課資料`;
