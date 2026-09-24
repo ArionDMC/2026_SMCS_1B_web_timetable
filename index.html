@@ -4,11 +4,188 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Class 1B Timetable</title>
+  <style>
+    :root {
+      --bg:#f6f4ef; --card:#fbfaf7; --line:#d8d4cb; --text:#22201b; --muted:#726f69; --accent:#0f6b6f;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family: Arial, sans-serif; background:var(--bg); color:var(--text); }
+    header { position:sticky; top:0; background:rgba(246,244,239,.92); backdrop-filter: blur(8px); padding:16px; border-bottom:1px solid var(--line); }
+    h1 { margin:0; font-size:24px; }
+    main { max-width:960px; margin:0 auto; padding:16px; display:grid; gap:16px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    .row { display:flex; gap:8px; flex-wrap:wrap; }
+    button, input, select { font:inherit; }
+    button { border:none; border-radius:999px; background:var(--accent); color:white; padding:10px 14px; min-height:44px; }
+    button.secondary { background:#e6ecea; color:var(--text); }
+    input[type="date"], select { width:100%; padding:12px; border-radius:12px; border:1px solid var(--line); background:white; min-height:44px; }
+    .meta { color:var(--muted); font-size:14px; }
+    .schedule { display:grid; gap:10px; }
+    .lesson { display:grid; grid-template-columns:90px 1fr; gap:12px; padding:10px 0; border-top:1px solid var(--line); }
+    .lesson:first-child { border-top:none; }
+    .time { font-weight:bold; }
+    .subject { font-size:18px; }
+    .days-grid { display:grid; gap:12px; }
+    .day-block { border:1px solid var(--line); border-radius:14px; padding:12px; background:white; }
+    .day-block h3 { margin:0 0 8px; }
+    .mini { font-size:14px; color:var(--muted); }
+    .calendar-controls { display:grid; grid-template-columns:44px 1fr 44px; gap:8px; align-items:center; }
+    .calendar-title { text-align:center; font-size:24px; font-weight:bold; }
+    .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); border:1px solid var(--line); border-bottom:none; border-right:none; margin-top:12px; }
+    .weekday, .cell { min-height:88px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); padding:8px; background:#fff; }
+    .weekday { min-height:auto; text-align:center; background:#efede8; color:var(--muted); }
+    .cell.empty { background:#f3f1ec; }
+    .num { font-weight:bold; }
+    .cycle { margin-top:24px; color:#908c85; font-size:28px; text-align:right; }
+    .holiday { background:#c8df85; }
+    @media (max-width: 640px) {
+      .lesson { grid-template-columns:1fr; gap:2px; }
+      .calendar-title { font-size:20px; }
+      .cycle { font-size:22px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Class 1B Timetable</h1>
-  <p>Updated index.html version.</p>
-  <p>December 2026 day-cycle entries have been added.</p>
-  <p>IL lessons are restored in the timetable data for Day II, Day IV, and Day VI.</p>
+  <header><h1>Class 1B Timetable</h1></header>
+  <main>
+    <section class="card">
+      <div class="row">
+        <button id="todayBtn">今日</button>
+        <button id="nextSchoolBtn" class="secondary">下一個上課日</button>
+        <button id="nextPEBtn" class="secondary">最近 PE</button>
+      </div>
+      <div style="margin-top:12px"><input id="dateInput" type="date"></div>
+      <div id="summary" style="margin-top:12px"></div>
+    </section>
+
+    <section class="card">
+      <h2>當日課表</h2>
+      <div id="schedule" class="schedule"></div>
+    </section>
+
+    <section class="card">
+      <h2>Day 1–7 全部時間表</h2>
+      <div id="allDays" class="days-grid"></div>
+    </section>
+
+    <section class="card">
+      <h2>Day Cycle 月曆</h2>
+      <div class="calendar-controls">
+        <button id="prevMonth" class="secondary">‹</button>
+        <div id="calendarTitle" class="calendar-title"></div>
+        <button id="nextMonth" class="secondary">›</button>
+      </div>
+      <div id="calendar" class="calendar-grid"></div>
+    </section>
+  </main>
+
+  <script>
+    const timetable = {
+      "I": [
+        ["08:25","08:50","CHI"],["08:50","09:15","CHI"],["09:30","09:55","MATH"],["09:55","10:20","MATH"],["10:30","10:55","ENG"],["10:55","11:20","ENG"],["11:30","11:55","LIB"],["11:55","12:20","PHum"],["12:20","12:50","PHum"]
+      ],
+      "II": [
+        ["08:25","08:50","VA"],["08:50","09:15","VA"],["09:30","09:55","CHI"],["09:55","10:20","CHI"],["10:30","10:55","RE"],["10:55","11:20","MATH"],["11:30","11:55","ENG"],["11:55","12:20","IL"],["12:20","12:50","IL"]
+      ],
+      "III": [
+        ["08:25","08:50","PTH"],["08:50","09:15","MUS"],["09:30","09:55","ENG"],["09:55","10:20","ENG"],["10:30","10:55","CHI"],["10:55","11:20","CHI"],["11:30","11:55","MATH"],["11:55","12:20","PE"],["12:20","12:50","Tutorial"]
+      ],
+      "IV": [
+        ["08:25","08:50","SCI"],["08:50","09:15","SCI"],["09:30","09:55","CHI"],["09:55","10:20","CHI"],["10:30","10:55","MATH"],["10:55","11:20","ENG"],["11:30","11:55","ICT"],["11:55","12:20","IL"],["12:20","12:50","IL"]
+      ],
+      "V": [
+        ["08:25","08:50","CHI"],["08:50","09:15","CHI"],["09:30","09:55","MATH"],["09:55","10:20","VA"],["10:30","10:55","Reading"],["10:55","11:20","Reading"],["11:30","11:55","RE"],["11:55","12:20","MUS"],["12:20","12:50","Tutorial"]
+      ],
+      "VI": [
+        ["08:25","08:50","PHum"],["08:50","09:15","PHum"],["09:30","09:55","MATH"],["09:55","10:20","ENG"],["10:30","10:55","PE"],["10:55","11:20","PE"],["11:30","11:55","CHI"],["11:55","12:20","IL"],["12:20","12:50","IL"]
+      ],
+      "VII": [
+        ["08:25","08:50","SCI"],["08:50","09:15","SCI"],["09:30","09:55","MUS"],["09:55","10:20","MATH"],["10:30","10:55","ENG"],["10:55","11:20","ENG"],["11:30","11:55","CHI"],["11:55","12:20","CHI"],["12:20","12:50","Tutorial"]
+      ]
+    };
+
+    const dayCycle = {
+      "2026-09-07":"I","2026-09-08":"II","2026-09-09":"III","2026-09-10":"IV","2026-09-11":"V","2026-09-14":"VI","2026-09-15":"VII","2026-09-16":"I","2026-09-17":"II","2026-09-18":"III","2026-09-21":"IV","2026-09-22":"V","2026-09-23":"VI","2026-09-24":"VII","2026-09-25":"I","2026-09-28":"II","2026-09-29":"III","2026-09-30":"IV",
+      "2026-10-02":"V","2026-10-05":"VI","2026-10-06":"VII","2026-10-07":"I","2026-10-08":"II","2026-10-09":"III","2026-10-12":"IV","2026-10-13":"V","2026-10-14":"VI","2026-10-15":"VII","2026-10-16":"I","2026-10-19":"II","2026-10-20":"III","2026-10-21":"IV","2026-10-22":"V","2026-10-23":"VI","2026-10-26":"V","2026-10-27":"VI","2026-10-28":"VII","2026-10-29":"I","2026-10-30":"II",
+      "2026-11-02":"III","2026-11-03":"IV","2026-11-04":"V","2026-11-05":"VI","2026-11-06":"VII","2026-11-16":"I","2026-11-17":"II","2026-11-18":"III","2026-11-19":"IV","2026-11-20":"V","2026-11-23":"VI","2026-11-24":"VII","2026-11-25":"I","2026-11-26":"II","2026-11-27":"III","2026-11-30":"IV",
+      "2026-12-01":"V","2026-12-02":"VI","2026-12-03":"VII","2026-12-04":"I","2026-12-07":"II","2026-12-08":"III","2026-12-09":"IV","2026-12-10":"V","2026-12-11":"VI","2026-12-14":"VII","2026-12-15":"I","2026-12-16":"II","2026-12-17":"III","2026-12-18":"IV",
+      "2027-01-04":"V","2027-01-05":"VI","2027-01-06":"VII","2027-01-07":"I","2027-01-08":"II","2027-01-11":"III","2027-01-12":"IV","2027-01-13":"V","2027-01-14":"VI","2027-01-15":"VII","2027-01-18":"I","2027-01-19":"II","2027-01-20":"III","2027-01-21":"IV","2027-01-22":"V","2027-01-25":"VI","2027-01-26":"VII","2027-01-27":"I","2027-01-28":"II","2027-01-29":"III",
+      "2027-02-01":"IV","2027-02-02":"V","2027-02-16":"VI","2027-02-17":"VII","2027-02-18":"I","2027-02-19":"II","2027-02-22":"III","2027-02-23":"IV","2027-02-24":"V","2027-02-25":"VI","2027-02-26":"VII",
+      "2027-03-01":"I","2027-03-02":"II","2027-03-03":"III","2027-03-04":"IV","2027-03-05":"V","2027-03-15":"VI","2027-03-16":"VII","2027-03-17":"I","2027-03-18":"II","2027-03-19":"III","2027-03-22":"IV","2027-03-23":"V",
+      "2027-04-06":"VI","2027-04-07":"VII","2027-04-08":"I","2027-04-09":"II","2027-04-12":"III","2027-04-13":"IV","2027-04-14":"V","2027-04-15":"VI","2027-04-16":"VII","2027-04-19":"I","2027-04-20":"II","2027-04-21":"III","2027-04-22":"IV","2027-04-23":"V","2027-04-26":"VI","2027-04-27":"VII","2027-04-28":"I","2027-04-29":"II","2027-04-30":"III",
+      "2027-05-03":"IV","2027-05-04":"V","2027-05-05":"VI","2027-05-07":"VII","2027-05-10":"I","2027-05-11":"II","2027-05-12":"III","2027-05-14":"IV","2027-05-17":"V","2027-05-18":"VI","2027-05-19":"VII","2027-05-20":"I","2027-05-21":"II","2027-05-24":"III","2027-05-25":"IV","2027-05-26":"V","2027-05-27":"VI","2027-05-28":"VII",
+      "2027-06-07":"I","2027-06-08":"II","2027-06-10":"III","2027-06-11":"IV","2027-06-14":"V","2027-06-15":"VI","2027-06-16":"VII","2027-06-17":"I","2027-06-18":"II","2027-06-21":"III","2027-06-22":"IV","2027-06-23":"V","2027-06-24":"VI","2027-06-25":"VII","2027-06-28":"I","2027-06-29":"II","2027-06-30":"III",
+      "2027-07-02":"IV","2027-07-05":"V","2027-07-06":"VI","2027-07-07":"VII","2027-07-08":"I"
+    };
+
+    const holidays = new Set(["2026-12-19","2026-12-20","2026-12-21","2026-12-22","2026-12-23","2026-12-24","2026-12-25","2026-12-26","2026-12-27","2026-12-28","2026-12-29","2026-12-30","2026-12-31"]);
+    const weekdayNames = ["日","一","二","三","四","五","六"];
+    const cycleOrder = ["I","II","III","IV","V","VI","VII"];
+    const dateInput = document.getElementById('dateInput');
+    const summary = document.getElementById('summary');
+    const schedule = document.getElementById('schedule');
+    const allDays = document.getElementById('allDays');
+    const calendar = document.getElementById('calendar');
+    const calendarTitle = document.getElementById('calendarTitle');
+    let currentMonth = new Date(2026, 11, 1);
+
+    function fmtDate(d){ return d.toISOString().slice(0,10); }
+    function parseLocal(s){ const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); }
+    function displayDate(s){ const d=parseLocal(s); return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${weekdayNames[d.getDay()]}）`; }
+    function renderDay(dateStr){
+      const cycle = dayCycle[dateStr];
+      summary.innerHTML = cycle
+        ? `<div><strong>${displayDate(dateStr)}</strong></div><div class="meta">Day ${cycle}</div>`
+        : `<div><strong>${displayDate(dateStr)}</strong></div><div class="meta">沒有 Day Cycle</div>`;
+      schedule.innerHTML = '';
+      if(!cycle) { schedule.innerHTML = '<div class="meta">這一天沒有課表。</div>'; return; }
+      timetable[cycle].forEach(([start,end,subject]) => {
+        const el = document.createElement('div');
+        el.className = 'lesson';
+        el.innerHTML = `<div class="time">${start}–${end}</div><div class="subject">${subject}</div>`;
+        schedule.appendChild(el);
+      });
+    }
+    function renderAllDays(){
+      allDays.innerHTML='';
+      cycleOrder.forEach(c => {
+        const block = document.createElement('div');
+        block.className='day-block';
+        block.innerHTML = `<h3>Day ${c}</h3>` + timetable[c].map(([s,e,sub]) => `<div class="mini">${s}–${e} · ${sub}</div>`).join('');
+        allDays.appendChild(block);
+      });
+    }
+    function renderCalendar(){
+      calendar.innerHTML='';
+      weekdayNames.forEach(w => { const d=document.createElement('div'); d.className='weekday'; d.textContent=w; calendar.appendChild(d); });
+      const y=currentMonth.getFullYear(), m=currentMonth.getMonth();
+      calendarTitle.textContent = `${y}年${m+1}月`;
+      const first = new Date(y,m,1), last = new Date(y,m+1,0);
+      for(let i=0;i<first.getDay();i++){ const e=document.createElement('div'); e.className='cell empty'; calendar.appendChild(e); }
+      for(let day=1; day<=last.getDate(); day++){
+        const ds = fmtDate(new Date(y,m,day));
+        const cell = document.createElement('div');
+        cell.className = 'cell' + (holidays.has(ds) ? ' holiday' : '');
+        const cyc = dayCycle[ds] || '';
+        cell.innerHTML = `<div class="num">${day}</div><div class="cycle">${cyc}</div>`;
+        if(cyc){ cell.style.cursor='pointer'; cell.onclick = () => { dateInput.value = ds; renderDay(ds); window.scrollTo({top:0, behavior:'smooth'}); }; }
+        calendar.appendChild(cell);
+      }
+    }
+    function nearestSchoolDay(from){ return Object.keys(dayCycle).find(d => d >= from) || Object.keys(dayCycle)[0]; }
+    function nearestPE(from){ return Object.keys(dayCycle).find(d => d >= from && ['III','VI'].includes(dayCycle[d])) || null; }
+    const today = new Date();
+    const todayStr = fmtDate(new Date(today.getFullYear(), today.getMonth(), today.getDate()));
+    dateInput.value = todayStr;
+    renderDay(dayCycle[todayStr] ? todayStr : nearestSchoolDay(todayStr));
+    renderAllDays();
+    renderCalendar();
+    dateInput.addEventListener('change', e => renderDay(e.target.value));
+    document.getElementById('todayBtn').addEventListener('click', () => { const d = dayCycle[todayStr] ? todayStr : nearestSchoolDay(todayStr); dateInput.value = d; renderDay(d); });
+    document.getElementById('nextSchoolBtn').addEventListener('click', () => { const d = nearestSchoolDay(todayStr); if(d){ dateInput.value = d; renderDay(d); } });
+    document.getElementById('nextPEBtn').addEventListener('click', () => { const d = nearestPE(todayStr); if(d){ dateInput.value = d; renderDay(d); } });
+    document.getElementById('prevMonth').addEventListener('click', () => { currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth()-1, 1); renderCalendar(); });
+    document.getElementById('nextMonth').addEventListener('click', () => { currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth()+1, 1); renderCalendar(); });
+  </script>
 </body>
 </html>
