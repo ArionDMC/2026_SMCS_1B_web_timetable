@@ -492,6 +492,23 @@ function labelFor(subject) {
       timetable = normalizeTimetableKeys(t);
       dayCycle = normalizeDayCycleKeys(d);
     }
+    function refreshTodayIfNeeded() {
+      const nowStr = new Date().toISOString().slice(0, 10);
+      if (nowStr !== todayFallbackDate) {
+        todayFallbackDate = dayCycle[nowStr] ? nowStr :
+          Object.keys(dayCycle).sort().find(d => d >= nowStr) || todayFallbackDate;
+        if (selectedDate === undefined || selectedDate === document.body.dataset.lastAutoDate) {
+          setDate(todayFallbackDate);
+          document.body.dataset.lastAutoDate = todayFallbackDate;
+        }
+      }
+    }
+
+    setInterval(refreshTodayIfNeeded, 60 * 1000);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') refreshTodayIfNeeded();
+    });
 
     startApp();
   </script>
